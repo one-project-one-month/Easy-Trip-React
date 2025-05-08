@@ -6,6 +6,7 @@ const Layout = () => {
 		<div className="min-h-screen">
 			<h3>Layout</h3>
 			<div>{<Outlet />}</div>
+      this is the 
 			<Footer />
 		</div>
 	);
