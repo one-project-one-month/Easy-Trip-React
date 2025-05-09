@@ -7,6 +7,7 @@ const Layout = () => {
 			<h3>Layout</h3>
 			<div>{<Outlet />}</div>
       this is the 
+	  dfkdflkjslkdj
 			<Footer />
 		</div>
 	);
