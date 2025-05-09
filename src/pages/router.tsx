@@ -2,6 +2,9 @@ import PageLoader from "@/components/core/PageLoader";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 import { Layout } from "@/components/core/layout";
+import AuthLayout from "@/components/core/layout/AuthLayout";
+import LoginPage from "./auth/LoginPage";
+import RegisterPage from "./auth/RegisterPage";
 
 const HomePage = PageLoader(lazy(() => import("@/pages/Home")));
 
@@ -24,4 +27,18 @@ export const userRoutes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        element: <LoginPage />
+      },
+      {
+        path: "/auth/register",
+        element: <RegisterPage />
+      }
+    ]
+  }
 ]);
