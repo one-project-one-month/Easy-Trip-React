@@ -1,12 +1,11 @@
 import useAuthStore, { getAccessToken } from "@/store/authStore";
 import axios from "axios";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import AppConfig from "@/config/AppConfig";
 
 const { setAccessToken, logout } = useAuthStore.getState();
 
 const API = axios.create({
-  baseURL: BASE_URL,
+  baseURL: AppConfig.BASE_URL,
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -31,7 +30,7 @@ API.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const res = await axios.post(
-          `${BASE_URL}/auth/refresh`,
+          `${AppConfig.BASE_URL}/auth/refresh`,
           {},
           { withCredentials: true }
         );

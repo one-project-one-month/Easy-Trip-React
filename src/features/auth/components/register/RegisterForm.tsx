@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { Link } from "react-router";
 import useRegister from "@/features/auth/hooks/useRegister";
+import { useState } from "react";
+import { Eye, EyeClosed } from "lucide-react";
 
 const registerSchema = z
   .object({
@@ -38,11 +40,22 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const { mutate } = useRegister();
 
   const handleRegister = (data: z.infer<typeof registerSchema>) => {
     mutate({ name: data.name, email: data.email, password: data.password });
   };
+
+  const handleViewPassword = () => {
+    setShowPassword((prev) => prev? false: true);
+  }
+
+  const handleViewConfirmPassword = () => {
+    setShowConfirmPassword((prev) => prev? false: true);
+  }
 
   return (
     <div className="w-full h-lvh flex justify-center items-center">
@@ -105,12 +118,24 @@ export default function RegisterForm() {
                   Password
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Enter your password"
-                    {...field}
-                    className="border-gray-300 rounded-lg transition-all"
-                    type="password"
-                  />
+                  <div className="relative">
+                    <Input
+                      placeholder="Enter your password"
+                      {...field}
+                      className="border-gray-300 rounded-lg transition-all pr-10"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <span
+                      onClick={handleViewPassword}
+                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
+                    >
+                      {showPassword ? (
+                        <Eye className="w-5 h-5" />
+                      ) : (
+                        <EyeClosed className="w-5 h-5" />
+                      )}
+                    </span>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -125,12 +150,24 @@ export default function RegisterForm() {
                   Confirm Password
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Confirm your password"
-                    type="password"
-                    {...field}
-                    className="border-gray-300 rounded-lg  transition-all"
-                  />
+                  <div className="relative">
+                    <Input
+                      placeholder="Confirm your password"
+                      {...field}
+                      className="border-gray-300 rounded-lg transition-all pr-10"
+                      type={showConfirmPassword ? "text" : "password"}
+                    />
+                    <span
+                      onClick={handleViewConfirmPassword}
+                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
+                    >
+                      {showConfirmPassword ? (
+                        <Eye className="w-5 h-5" />
+                      ) : (
+                        <EyeClosed className="w-5 h-5" />
+                      )}
+                    </span>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

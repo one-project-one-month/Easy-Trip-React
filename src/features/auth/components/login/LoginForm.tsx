@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { Link } from "react-router";
 import useLogin from "@/features/auth/hooks/useLogin";
+import { useState } from "react";
+import { EyeClosed, Eye } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email().nonempty("Email is required"),
@@ -26,11 +28,17 @@ export default function LoginForm() {
     resolver: zodResolver(loginSchema),
   });
 
-  const {mutate} = useLogin();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { mutate } = useLogin();
 
   const handleLogin = (data: z.infer<typeof loginSchema>) => {
-      mutate({...data});
-  }
+    mutate({ ...data });
+  };
+
+  const handleViewPassword = () => {
+    setShowPassword((prev) => (prev ? false : true));
+  };
 
   return (
     <div className="w-full h-lvh flex justify-center items-center">
@@ -74,12 +82,24 @@ export default function LoginForm() {
                   Password
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Enter your password"
-                    {...field}
-                    className="border-gray-300 rounded-lg transition-all"
-                    type="password"
-                  />
+                  <div className="relative">
+                    <Input
+                      placeholder="Enter your password"
+                      {...field}
+                      className="border-gray-300 rounded-lg transition-all pr-10"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <span
+                      onClick={handleViewPassword}
+                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
+                    >
+                      {showPassword ? (
+                        <Eye className="w-5 h-5" />
+                      ) : (
+                        <EyeClosed className="w-5 h-5" />
+                      )}
+                    </span>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
