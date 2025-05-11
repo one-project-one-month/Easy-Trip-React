@@ -1,20 +1,13 @@
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Link } from "react-router";
 import useLogin from "@/features/auth/hooks/useLogin";
-import { useState } from "react";
-import { EyeClosed, Eye } from "lucide-react";
+import TextInput from "@/components/common/TextInput";
 
 const loginSchema = z.object({
   email: z.string().email().nonempty("Email is required"),
@@ -27,17 +20,10 @@ export default function LoginForm() {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
   });
-
-  const [showPassword, setShowPassword] = useState(false);
-
   const { mutate } = useLogin();
 
   const handleLogin = (data: z.infer<typeof loginSchema>) => {
     mutate({ ...data });
-  };
-
-  const handleViewPassword = () => {
-    setShowPassword((prev) => (prev ? false : true));
   };
 
   return (
@@ -53,59 +39,18 @@ export default function LoginForm() {
           <p className="text-center text-gray-500 text-sm">
             Please login to your account
           </p>
-          <FormField
-            control={form.control}
+          <TextInput
+            type="TEXT"
             name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your email"
-                    type="email"
-                    {...field}
-                    className="border-gray-300 rounded-lg transition-all"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+            label="Email"
             control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Password
-                </FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input
-                      placeholder="Enter your password"
-                      {...field}
-                      className="border-gray-300 rounded-lg transition-all pr-10"
-                      type={showPassword ? "text" : "password"}
-                    />
-                    <span
-                      onClick={handleViewPassword}
-                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
-                    >
-                      {showPassword ? (
-                        <Eye className="w-5 h-5" />
-                      ) : (
-                        <EyeClosed className="w-5 h-5" />
-                      )}
-                    </span>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
           />
-
+          <TextInput
+            type="PASSWORD"
+            name="password"
+            label="Password"
+            control={form.control}
+          />
           <Button
             type="submit"
             className="w-full py-3 px-4 rounded-lg disabled:bg-gray-300 transition-all font-medium shadow-md hover:shadow-lg"

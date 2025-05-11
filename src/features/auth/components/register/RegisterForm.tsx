@@ -1,20 +1,11 @@
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { Link } from "react-router";
 import useRegister from "@/features/auth/hooks/useRegister";
-import { useState } from "react";
-import { Eye, EyeClosed } from "lucide-react";
+import TextInput from "@/components/common/TextInput";
 
 const registerSchema = z
   .object({
@@ -39,23 +30,11 @@ export default function RegisterForm() {
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
   });
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const { mutate } = useRegister();
 
   const handleRegister = (data: z.infer<typeof registerSchema>) => {
     mutate({ name: data.name, email: data.email, password: data.password });
   };
-
-  const handleViewPassword = () => {
-    setShowPassword((prev) => prev? false: true);
-  }
-
-  const handleViewConfirmPassword = () => {
-    setShowConfirmPassword((prev) => prev? false: true);
-  }
 
   return (
     <div className="w-full h-lvh flex justify-center items-center">
@@ -70,108 +49,29 @@ export default function RegisterForm() {
           <p className="text-center text-gray-500 text-sm">
             Join us and plan your trip easily
           </p>
-          <FormField
-            control={form.control}
+          <TextInput
+            type="TEXT"
             name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Name
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your name"
-                    {...field}
-                    className="border-gray-300 rounded-lg transition-all"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+            label="Name"
             control={form.control}
+          />
+          <TextInput
+            type="TEXT"
             name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your email"
-                    type="email"
-                    {...field}
-                    className="border-gray-300 rounded-lg transition-all"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+            label="Email"
             control={form.control}
+          />
+          <TextInput
+            type="PASSWORD"
             name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Password
-                </FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input
-                      placeholder="Enter your password"
-                      {...field}
-                      className="border-gray-300 rounded-lg transition-all pr-10"
-                      type={showPassword ? "text" : "password"}
-                    />
-                    <span
-                      onClick={handleViewPassword}
-                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
-                    >
-                      {showPassword ? (
-                        <Eye className="w-5 h-5" />
-                      ) : (
-                        <EyeClosed className="w-5 h-5" />
-                      )}
-                    </span>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+            label="Password"
             control={form.control}
+          />
+          <TextInput
+            type="PASSWORD"
             name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-gray-700 font-medium">
-                  Confirm Password
-                </FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <Input
-                      placeholder="Confirm your password"
-                      {...field}
-                      className="border-gray-300 rounded-lg transition-all pr-10"
-                      type={showConfirmPassword ? "text" : "password"}
-                    />
-                    <span
-                      onClick={handleViewConfirmPassword}
-                      className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
-                    >
-                      {showConfirmPassword ? (
-                        <Eye className="w-5 h-5" />
-                      ) : (
-                        <EyeClosed className="w-5 h-5" />
-                      )}
-                    </span>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Confirm Password"
+            control={form.control}
           />
           <Button
             type="submit"
