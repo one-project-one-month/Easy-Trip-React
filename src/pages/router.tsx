@@ -7,9 +7,10 @@ import LoginPage from "./auth/LoginPage";
 import RegisterPage from "./auth/RegisterPage";
 
 const HomePage = PageLoader(lazy(() => import("@/pages/Home")));
+const TripPlan = PageLoader(lazy(() => import("@/pages/TripPlan")));
 
 const NotFound = PageLoader(
-  lazy(() => import("@/components/core/error/notFound"))
+	lazy(() => import("@/components/core/error/notFound"))
 );
 
 export const userRoutes = createBrowserRouter([
@@ -21,6 +22,10 @@ export const userRoutes = createBrowserRouter([
         path: "",
         element: <HomePage />,
       },
+      {
+				path: "/trip",
+				element: <TripPlan />,
+			},
       {
         path: "*",
         element: <NotFound />,
