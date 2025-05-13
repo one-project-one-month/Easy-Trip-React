@@ -1,13 +1,15 @@
 import PageLoader from "@/components/core/PageLoader";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
-import { Layout } from "@/components/core/layout";
+// import { Layout } from "@/components/core/layout";
 import AuthLayout from "@/components/core/layout/AuthLayout";
-import LoginPage from "./auth/LoginPage";
-import RegisterPage from "./auth/RegisterPage";
+import PublicLayout from "@/components/core/layout/PublicLayout";
 
-const HomePage = PageLoader(lazy(() => import("@/pages/Home")));
+// const HomePage = PageLoader(lazy(() => import("@/pages/Home")));
 const TripPlan = PageLoader(lazy(() => import("@/pages/TripPlan")));
+const LandingPage = PageLoader(lazy(() => import("@/pages/public/LandingPage")));
+const LoginPage = PageLoader(lazy(() => import("@/pages/auth/LoginPage")));
+const RegisterPage = PageLoader(lazy(() => import("@/pages/auth/RegisterPage")));
 
 const NotFound = PageLoader(
 	lazy(() => import("@/components/core/error/notFound"))
@@ -16,11 +18,11 @@ const NotFound = PageLoader(
 export const userRoutes = createBrowserRouter([
   {
     path: "",
-    element: <Layout />,
+    element: <PublicLayout />,
     children: [
       {
-        path: "",
-        element: <HomePage />,
+        index: true,
+        element: <LandingPage />,
       },
       {
 				path: "/trip",
