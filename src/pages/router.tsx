@@ -10,6 +10,8 @@ const TripPlan = PageLoader(lazy(() => import("@/pages/TripPlan")));
 const LandingPage = PageLoader(lazy(() => import("@/pages/public/LandingPage")));
 const LoginPage = PageLoader(lazy(() => import("@/pages/auth/LoginPage")));
 const RegisterPage = PageLoader(lazy(() => import("@/pages/auth/RegisterPage")));
+const TripPlanFormPage = PageLoader(lazy(() => import("@/pages/user/TripPlanFormPage")));
+const UserLayoutPage = PageLoader(lazy(() => import("@/components/core/layout/UserLayout")));
 
 const NotFound = PageLoader(
 	lazy(() => import("@/components/core/error/notFound"))
@@ -45,6 +47,16 @@ export const userRoutes = createBrowserRouter([
       {
         path: "/auth/register",
         element: <RegisterPage />
+      }
+    ]
+  },
+  {
+    path: "/user",
+    element: <UserLayoutPage />,
+    children: [
+      {
+        path: "trip-plan-form",
+        element: <TripPlanFormPage />
       }
     ]
   }

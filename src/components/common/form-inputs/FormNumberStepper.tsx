@@ -70,6 +70,7 @@ const FormNumberStepper = <TValues extends FieldValues>({
               <Input
                 {...field}
                 {...props}
+
                 onBlur={() => {
                   if (inputValue) {
                     setInputValue(undefined);

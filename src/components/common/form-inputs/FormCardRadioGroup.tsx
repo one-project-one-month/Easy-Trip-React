@@ -29,6 +29,7 @@ export type FormCardRadioGroupProps<TValues extends FieldValues> = Omit<
   label: string;
   wrapperClassName?: string;
   labelClassName?: string;
+  radioClassName?: string;
   options: RadioOptions;
 };
 
@@ -38,6 +39,7 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
   name,
   wrapperClassName,
   labelClassName,
+  radioClassName,
   options,
   ...props
 }: FormCardRadioGroupProps<TValues>) => {
@@ -58,7 +60,7 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className='flex items-center gap-2'
+              className={cn('flex items-center gap-2', radioClassName)}
             >
               {options.map((item) => (
                 <FormItem key={item.value.toLocaleString()}>
@@ -92,7 +94,7 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
                       <CircleCheck
                         size={16}
                         className={cn(
-                          "absolute right-2 top-1 opacity-0 transition-all text-green-500",
+                          "absolute right-2 top-1 opacity-0 transition-all",
                           {
                             "opacity-100": field.value === item.value,
                           }
