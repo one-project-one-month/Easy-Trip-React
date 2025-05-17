@@ -1,23 +1,23 @@
 export type BaseUser = {
-    id: String,
-    email: String,
-    isSurvey: Boolean
-}
+  id: string;
+  email: string;
+  isSurvey: Boolean;
+};
 
 export type Credential = {
-    email: String,
-    password: String,
-}
+  email: string;
+  password: string;
+};
 
 export type RegisterUser = Credential & {
-    name: String,
-}
+  name: string;
+};
 
 export type RegisterResponse = {
-    accessToken: string,
-}
+  accessToken: string;
+};
 
 export type LoginResponse = {
-    accessToken: string,
-    isSurvey: string
-}
+  accessToken: string;
+  isSurvey: string;
+};

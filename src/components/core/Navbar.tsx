@@ -11,7 +11,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserRound, LogOut } from "lucide-react";
+import { UserRound, LogOut, Home, Info, LogIn, FilePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 
@@ -22,7 +22,7 @@ export default function Navbar() {
     <nav className="flex justify-between text-white items-center fixed w-full py-3 px-6 bg-black z-50 shadow-lg">
       <div>
         <Link
-          className="font-extrabold flex text-3xl hover:bg-transparent hover:text-white transition-transform duration-300 hover:scale-110"
+          className="font-extrabold flex text-sm md:text-3xl hover:bg-transparent hover:text-white transition-transform duration-300 hover:scale-110"
           to="/"
         >
           Easy Trip
@@ -37,7 +37,8 @@ export default function Navbar() {
                 className="text-gray-300 active:bg-transparent hover:bg-transparent text-md transition-colors duration-300 hover:text-white"
                 href="/"
               >
-                Home
+                <span className="md:block hidden">Home</span>
+                <Home className="text-white md:hidden block" />
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -45,7 +46,8 @@ export default function Navbar() {
                 className="text-gray-300 active:bg-transparent hover:bg-transparent text-md transition-colors duration-300 hover:text-white"
                 href="/about"
               >
-                About Us
+                <span className="md:block hidden">About</span>
+                <Info className="text-white md:hidden block" />
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -61,7 +63,8 @@ export default function Navbar() {
                   className="text-gray-300 active:bg-transparent hover:bg-transparent transition-colors duration-300 text-lg hover:text-white"
                   href="/auth"
                 >
-                  Login
+                  <span className="md:block hidden">Login</span>
+                <LogIn className="text-white md:hidden block" />
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -69,7 +72,8 @@ export default function Navbar() {
                   href="/auth/register"
                   className="px-5 py-2 border-2 border-gray-700 hover:border-gray-500 rounded-full shadow-md  text-gray-300 font-semibold transform hover:scale-105 transition-all duration-300"
                 >
-                  Register
+                  <span className="md:block hidden">Register</span>
+                <FilePen className="md:hidden block" />
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
