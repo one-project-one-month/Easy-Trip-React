@@ -54,8 +54,7 @@ export default function TripPlanForm() {
 
   return (
     <div
-      style={{ aspectRatio: "2" }}
-      className="w-full flex items-center justify-center py-10"
+      className="w-full h-lvh flex items-center justify-center py-10"
     >
       <Form {...form}>
         <form
