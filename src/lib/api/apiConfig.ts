@@ -1,47 +1,74 @@
-import useAuthStore, { getAccessToken } from "@/store/authStore";
-import axios from "axios";
+import { redirect } from "react-router";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
+
 import AppConfig from "@/config/AppConfig";
+import useAuthStore, {
+  getAccessToken,
+  getRefreshToken,
+} from "@/store/authStore";
+
+interface AuthRequestConfig extends AxiosRequestConfig {
+  _retry?: boolean;
+}
+
+const API: AxiosInstance = axios.create({
+  baseURL: AppConfig.BASE_URL,
+  timeout: 10000,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 const { setAccessToken, logout } = useAuthStore.getState();
-
-const API = axios.create({
-  baseURL: AppConfig.BASE_URL,
-  headers: { "Content-Type": "application/json" },
-  withCredentials: true,
-});
 
 API.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
-    if (token) {
+
+    if (token?.trim().length) {
+      config.headers = config.headers || {};
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error)
 );
 
 API.interceptors.response.use(
   (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
+
+  async (error: AxiosError) => {
+    const originalRequest = error.config as AuthRequestConfig;
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      try {
-        const res = await axios.post(
-          `${AppConfig.BASE_URL}/auth/refresh`,
-          {},
-          { withCredentials: true }
-        );
-        const newAccessToken = res.data.accessToken;
-        setAccessToken(newAccessToken);
-        API.defaults.headers.Authorization = `Bearer ${newAccessToken}`;
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return API(originalRequest);
-      } catch (err) {
+
+      const refreshToken = getRefreshToken()?.trim();
+      console.log("refreshToken", refreshToken);
+      if (!refreshToken) {
         logout();
-        return Promise.reject(err);
+
+        return redirect("/auth");
+      }
+
+      try {
+        const { data: refreshData } = await API.post("/auth/refresh", {
+          refreshToken,
+        });
+
+        const newAccessToken = refreshData.accessToken;
+        setAccessToken(newAccessToken);
+
+        originalRequest.headers = {
+          ...originalRequest.headers,
+          Authorization: `Bearer ${newAccessToken}`,
+        };
+        return API(originalRequest);
+      } catch {
+        logout();
+        return redirect("/auth");
       }
     }
 

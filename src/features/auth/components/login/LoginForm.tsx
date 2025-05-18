@@ -1,12 +1,14 @@
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router";
+import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import FormInput from "@/components/common/form-inputs/FormInput";
-import useLogin from "@/features/auth/hooks/useLogin";
+
+import { useLogin } from "@/features/auth/hooks/useAuth";
 
 const loginSchema = z.object({
   email: z.string().email().nonempty("Email is required"),
@@ -18,6 +20,11 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from || "/";
+
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -26,10 +33,14 @@ export default function LoginForm() {
     },
   });
 
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const handleLogin = (data: LoginFormValues) => {
-    mutate(data);
+    mutate(data, {
+      onSuccess: () => {
+        navigate(from, { replace: true });
+      },
+    });
   };
 
   return (
@@ -67,6 +78,7 @@ export default function LoginForm() {
             className='w-full py-3 px-4 rounded-lg disabled:bg-gray-300 transition-all font-medium shadow-md hover:shadow-lg'
             disabled={!form.formState.isValid}
           >
+            {isPending && <Loader2 className='mr-2 animate-spin' size={16} />}
             Login
           </Button>
 

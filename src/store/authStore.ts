@@ -1,9 +1,13 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type AuthStore = {
   accessToken: string | null;
-  setAccessToken: (token: string) => void;
+  refreshToken: string | null;
+  setAccessToken: (
+    accessToken: AuthStore["accessToken"],
+    refreshToken?: AuthStore["refreshToken"]
+  ) => void;
   logout: () => void;
 };
 
@@ -11,20 +15,25 @@ const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       accessToken: null,
-      setAccessToken: (token: string) => {
-        set({ accessToken: token });
+      refreshToken: null,
+      setAccessToken: (
+        accessToken: AuthStore["accessToken"],
+        refreshToken?: AuthStore["refreshToken"]
+      ) => {
+        set({ accessToken, refreshToken });
       },
       logout: () => {
-        set({ accessToken: null });
+        set({ accessToken: null, refreshToken: null });
       },
     }),
     {
-      name: 'auth-storage',
+      name: "auth-storage",
       storage: createJSONStorage(() => localStorage),
     }
   )
 );
 
 export const getAccessToken = () => useAuthStore.getState().accessToken;
+export const getRefreshToken = () => useAuthStore.getState().refreshToken;
 
 export default useAuthStore;
