@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { Link } from "react-router";
 import useRegister from "@/features/auth/hooks/useRegister";
-import TextInput from "@/components/common/TextInput";
+import FormInput from "@/components/common/form-inputs/FormInput";
 
 const registerSchema = z
   .object({
@@ -41,7 +41,7 @@ export default function RegisterForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleRegister)}
-          className="w-full max-w-md p-8 bg-white shadow-2xl rounded-2xl space-y-6 transform transition-all duration-500 hover:scale-105 hover:shadow-3xl"
+          className="w-full max-w-md p-8 bg-white md:shadow-2xl rounded-2xl space-y-6 hover:shadow-3xl"
         >
           <h1 className="text-center text-4xl font-extrabold text-gray-800 tracking-tight">
             Create Account
@@ -49,29 +49,32 @@ export default function RegisterForm() {
           <p className="text-center text-gray-500 text-sm">
             Join us and plan your trip easily
           </p>
-          <TextInput
-            type="TEXT"
+          <FormInput
+            form={form}
             name="name"
             label="Name"
-            control={form.control}
+            placeholder="Enter your name"
           />
-          <TextInput
-            type="TEXT"
+          <FormInput
+            form={form}
             name="email"
             label="Email"
-            control={form.control}
+            placeholder="Enter your name"
           />
-          <TextInput
-            type="PASSWORD"
+
+          <FormInput
+            form={form}
             name="password"
             label="Password"
-            control={form.control}
+            type="password"
+            placeholder="Enter your password"
           />
-          <TextInput
-            type="PASSWORD"
+          <FormInput
+            form={form}
+            type="password"
             name="confirmPassword"
             label="Confirm Password"
-            control={form.control}
+            placeholder="Confirm your password"
           />
           <Button
             type="submit"

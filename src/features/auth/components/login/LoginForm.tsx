@@ -37,7 +37,7 @@ export default function LoginForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleLogin)}
-          className='w-full max-w-md p-8 bg-white shadow-2xl rounded-2xl space-y-6 transform transition-all'
+          className='w-full max-w-md p-8 bg-white md:shadow-2xl rounded-2xl space-y-6 transform transition-all'
         >
           <h1 className='text-center text-4xl font-extrabold text-gray-800 tracking-tight'>
             Welcome Back
