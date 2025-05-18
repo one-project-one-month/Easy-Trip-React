@@ -1,7 +1,7 @@
 export type BaseUser = {
   id: string;
   email: string;
-  isSurvey: Boolean;
+  isSurvey: boolean;
 };
 
 export type Credential = {
@@ -19,5 +19,12 @@ export type RegisterResponse = {
 
 export type LoginResponse = {
   accessToken: string;
-  isSurvey: string;
+  refreshToken?: string;
+};
+
+export type User = {
+  email: string;
+  id: string;
+  name: string;
+  provider: string;
 };

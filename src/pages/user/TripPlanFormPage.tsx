@@ -1,10 +1,11 @@
 import TripPlanForm from "@/features/user/components/TripPlanForm";
 
-
-export default function TripPlanFormPage() {
+function TripPlanFormPage() {
   return (
     <div>
       <TripPlanForm />
     </div>
-  )
+  );
 }
+
+export default TripPlanFormPage;
