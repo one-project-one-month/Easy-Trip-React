@@ -41,7 +41,7 @@ export default function RegisterForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleRegister)}
-          className="w-full max-w-md p-8 bg-white shadow-2xl rounded-2xl space-y-6 hover:shadow-3xl"
+          className="w-full max-w-md p-8 bg-white md:shadow-2xl rounded-2xl space-y-6 hover:shadow-3xl"
         >
           <h1 className="text-center text-4xl font-extrabold text-gray-800 tracking-tight">
             Create Account

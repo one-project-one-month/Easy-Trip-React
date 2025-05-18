@@ -46,6 +46,11 @@ type TripPlanValue = z.infer<typeof TripPlanSchema>;
 export default function TripPlanForm() {
   const form = useForm<TripPlanValue>({
     resolver: zodResolver(TripPlanSchema),
+    defaultValues: {
+      date: {from: "", to: ""},
+      budget: 1000000,
+      attendanceType: "solo trip"
+    }
   });
 
   const handleSubmint = (data: TripPlanValue) => {
@@ -54,24 +59,24 @@ export default function TripPlanForm() {
 
   return (
     <div
-      className="w-full h-lvh flex items-center justify-center py-10"
+      className="w-full h-lvh grid items-center justify-center py-10"
     >
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmint)}
-          className="w-full max-w-xl p-8 bg-white shadow-2xl rounded-2xl space-y-8 animate-fade-in"
+          className="w-full max-w-2xl p-8 bg-white md:shadow-2xl rounded-2xl space-y-8 animate-fade-in"
         >
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Plan Your Perfect Trip
+          <div className="text-start">
+            <h1 className="text-4xl font-bold text-gray-800 mb-3">
+              Tell Us Your Travel Preferences
             </h1>
-            <p className="text-gray-600 text-sm">
-              Fill out the details and let us craft a custom travel experience
-              for you.
+            <p className="text-gray-600 p-1 text-sm">
+              Just provide some basic information, and our trip planner will
+              generate a customized itinerary based on your preferences.
             </p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="md:flex space-y-3 md:space-y-0 gap-3">
             <FormDateRangePicker
               form={form}
               name="date"
@@ -83,7 +88,7 @@ export default function TripPlanForm() {
             <FormNumberStepper
               form={form}
               name="budget"
-              label="Your budget"
+              label="Your budget (MMK)"
               min={100000}
               step={100000}
               required
@@ -95,7 +100,7 @@ export default function TripPlanForm() {
             name="attendanceType"
             label="Who are you travelling with?"
             options={attendanceOptions}
-            radioClassName="grid grid-cols-2 gap-3"
+            radioClassName="grid grid-cols-4 gap-3"
             className="w-full"
             required
           />

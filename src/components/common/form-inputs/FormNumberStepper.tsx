@@ -54,11 +54,11 @@ const FormNumberStepper = <TValues extends FieldValues>({
           </FormLabel>
 
           <FormControl>
-            <div className='flex items-center gap-1 border rounded-md w-fit'>
+            <div className="flex items-center gap-1 border rounded-md w-fit">
               <Button
-                variant='ghost'
-                size='icon'
-                type='button'
+                variant="ghost"
+                size="icon"
+                type="button"
                 disabled={!(field.value > min)}
                 onClick={() =>
                   field.value > min && field.onChange(field.value - step)
@@ -70,7 +70,6 @@ const FormNumberStepper = <TValues extends FieldValues>({
               <Input
                 {...field}
                 {...props}
-
                 onBlur={() => {
                   if (inputValue) {
                     setInputValue(undefined);
@@ -94,19 +93,20 @@ const FormNumberStepper = <TValues extends FieldValues>({
               />
 
               <Button
-                variant='ghost'
-                size='icon'
-                type='button'
-                disabled={!(field.value < max)}
+                variant="ghost"
+                size="icon"
+                type="button"
+                disabled={!((field.value ?? 0) < max)}
                 onClick={() =>
-                  field.value < max && field.onChange(field.value + step)
+                  (field.value ?? 0) < max &&
+                  field.onChange((field.value ?? min) + step)
                 }
               >
                 <Plus size={16} />
               </Button>
             </div>
           </FormControl>
-          <FormMessage className="text-xs"/>
+          <FormMessage className="text-xs" />
         </FormItem>
       )}
     />
