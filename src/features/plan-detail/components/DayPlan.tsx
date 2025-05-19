@@ -5,13 +5,12 @@ export default function DayPlan({ plan }: { plan: DayPlanProps }) {
 	return (
 		<main>
 			<section className="">
-				<h1 className="text-2xl">{plan.date}</h1>
+				<h1 className="text-lg mb-3">{plan.date}</h1>
 				<div className="flex flex-col gap-3 w-[40%]">
-					<ActivityCard name={"Arnanda"} />
-					<ActivityCard name={"Shewzekone"} />
+					{plan.activities.map((activity) => (
+						<ActivityCard name={activity} />
+					))}
 				</div>
-
-				<div className=""></div>
 			</section>
 		</main>
 	);

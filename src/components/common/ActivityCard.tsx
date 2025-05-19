@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function ActivityCard({ name }) {
+export default function ActivityCard({ name }: { name: string }) {
 	return (
 		<Card className="shadow-lg">
 			<section className="flex px-3">

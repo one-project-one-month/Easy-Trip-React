@@ -17,6 +17,8 @@ import { ArrowLeft } from "lucide-react";
 
 import { Link } from "react-router";
 
+import { tripPlan } from "@/shared/tripPlan";
+
 import Itinerary from "./components/Itinerary";
 
 export default function DetailPlan() {
@@ -35,7 +37,9 @@ export default function DetailPlan() {
 				<div className="w-[50%]">
 					<Card className="gap-1 p-3 justify-between h-full">
 						<CardHeader className="p-0">
-							<CardTitle className="text-3xl">Bagan</CardTitle>
+							<CardTitle className="text-3xl">
+								{tripPlan.destination}
+							</CardTitle>
 							<CardDescription>4 Days Trip</CardDescription>
 						</CardHeader>
 						<h1 className="text-xl font-semibold">
@@ -68,7 +72,7 @@ export default function DetailPlan() {
 
 			<br />
 
-			<Itinerary />
+			<Itinerary plan={tripPlan.day_by_day_plan} />
 		</main>
 	);
 }
