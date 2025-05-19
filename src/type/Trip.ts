@@ -4,12 +4,17 @@ export type Trip = {
 	days: number;
 	start_date: string;
 	end_date: string;
-	dayPlan: DayPlan[];
+	dayPlan: DayPlanProps[];
 };
 
-type DayPlan = {
+export type DayPlanProps = {
+	day: number;
 	date: string;
-	activities: Activity[];
+	title: string;
+	place: string;
+	description: string;
+	activities: string[];
+	estimated_day_budget: number;
 };
 
 type Activity = {
