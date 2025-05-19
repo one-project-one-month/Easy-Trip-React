@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import API from "@/lib/api/apiConfig";
+import API from "@/lib/apiConfig";
 import type { RegisterUser, Credential } from "@/type/Auth";
 
 export const register = async (user: RegisterUser) => {

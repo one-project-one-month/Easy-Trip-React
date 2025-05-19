@@ -1,3 +1,6 @@
+import { Link } from "react-router";
+import { UserRound, LogOut, Home, Info, LogIn, FilePen } from "lucide-react";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -11,18 +14,16 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserRound, LogOut, Home, Info, LogIn, FilePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
 
 export default function Navbar() {
   const token = getAccessToken();
 
   return (
-    <nav className='flex justify-between text-white items-center fixed w-full py-3 px-6 bg-black z-50 shadow-lg'>
+    <nav className='flex justify-between text-white items-center fixed w-full py-3 px-6 bg-foreground z-50 shadow-lg'>
       <div>
         <Link
-          className='font-extrabold flex text-sm md:text-3xl hover:bg-transparent hover:text-white transition-transform duration-300 hover:scale-110'
+          className='font-extrabold flex text-sm md:text-3xl hover:bg-transparent hover:text-white transition-transform duration-300'
           to='/'
         >
           Easy Trip

@@ -1,12 +1,12 @@
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Handshake, Heart, Sparkles, User2, UsersRound } from "lucide-react";
 
 import { Form } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 import FormDateRangePicker from "@/components/common/form-inputs/FormDateRangePicker";
 import FormCardRadioGroup from "@/components/common/form-inputs/FormCardRadioGroup";
-import { Button } from "@/components/ui/button";
-import { Handshake, Heart, Sparkles, User2, UsersRound } from "lucide-react";
 import FormNumberStepper from "@/components/common/form-inputs/FormNumberStepper";
 
 const TripPlanSchema = z.object({
@@ -77,7 +77,7 @@ export default function TripPlanForm() {
             </p>
           </div>
 
-          <div className='md:flex space-y-3 md:space-y-0 gap-3'>
+          <div className='flex items-start gap-3'>
             <FormDateRangePicker
               form={form}
               name='date'

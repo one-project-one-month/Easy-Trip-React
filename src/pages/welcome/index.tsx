@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import {
   InstagramLogoIcon,
   TwitterLogoIcon,
@@ -5,12 +6,29 @@ import {
   GitHubLogoIcon,
   MagicWandIcon,
 } from "@radix-ui/react-icons";
-import { Link } from "react-router";
 
-export default function LandingFooter() {
+import { Button } from "@/components/ui/button";
+
+export default function Welcome() {
   return (
-    <div className='absolute bottom-0 left-0 w-full'>
-      <div className='container mx-auto flex gap-4 items-end justify-between px-4 pb-4'>
+    <div className='w-full h-lvh flex relative justify-center items-center'>
+      <div className='flex flex-col justify-center items-center text-center gap-5'>
+        <div className='text-xl md:text-2xl lg:text-5xl font-mono animate-fade-in tracking-wide lg:space-y-4 space-y-2'>
+          <p className='lg:text-2xl md:text-xl text-base'>
+            YOUR PERFECT <span className='text-blue-500'>TRIP,</span>
+          </p>
+
+          <p>
+            PLANNED IN <span className='text-blue-500'>MINUTES</span>
+          </p>
+        </div>
+
+        <Button asChild size={"lg"}>
+          <Link to='/plan/setup'>Get Started</Link>
+        </Button>
+      </div>
+
+      <div className='container mx-auto flex gap-4 items-end justify-between px-4 pb-4 absolute bottom-0 left-0 right-0'>
         <div className='md:space-y-4 space-y-1'>
           <h1 className='md:text-2xl flex items-center gap-3 font-bold'>
             <MagicWandIcon className='md:w-6 md:h-6 w-3 h-3' />

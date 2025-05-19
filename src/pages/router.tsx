@@ -1,30 +1,30 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
-// import { Layout } from "@/components/core/layout";
 import PageLoader from "@/components/core/PageLoader";
-import AuthLayout from "@/components/core/layout/AuthLayout";
-import PublicLayout from "@/components/core/layout/PublicLayout";
 
-// const HomePage = PageLoader(lazy(() => import("@/pages/Home")));
-// const TripPlan = PageLoader(lazy(() => import("@/pages/TripPlan")));
-const LandingPage = PageLoader(
-  lazy(() => import("@/pages/public/LandingPage"))
+const AuthLayout = PageLoader(
+  lazy(() => import("@/components/core/layout/AuthLayout"))
 );
+const PublicLayout = PageLoader(
+  lazy(() => import("@/components/core/layout/PublicLayout"))
+);
+const AuthenticatedLayout = PageLoader(
+  lazy(() => import("@/components/core/layout/AuthenticatedLayout"))
+);
+const NotFound = PageLoader(
+  lazy(() => import("@/components/core/error/notFound"))
+);
+
 const LoginPage = PageLoader(lazy(() => import("@/pages/auth/LoginPage")));
 const RegisterPage = PageLoader(
   lazy(() => import("@/pages/auth/RegisterPage"))
 );
-const TripPlanFormPage = PageLoader(
-  lazy(() => import("@/pages/user/TripPlanFormPage"))
-);
-const UserLayoutPage = PageLoader(
-  lazy(() => import("@/components/core/layout/UserLayout"))
-);
 
-const NotFound = PageLoader(
-  lazy(() => import("@/components/core/error/notFound"))
-);
+const Welcome = PageLoader(lazy(() => import("@/pages/welcome")));
+
+const Setup = PageLoader(lazy(() => import("@/pages/plan/setup")));
+const Itinerary = PageLoader(lazy(() => import("@/pages/plan/itinerary")));
 
 export const userRoutes = createBrowserRouter([
   {
@@ -33,13 +33,22 @@ export const userRoutes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LandingPage />,
+        element: <Welcome />,
       },
-      // {
-      //   path: "trip",
-      //   element: <TripPlan />,
-      // },
-
+      {
+        path: "plan",
+        element: <AuthenticatedLayout />,
+        children: [
+          {
+            path: "setup",
+            element: <Setup />,
+          },
+          {
+            path: "itinerary",
+            element: <Itinerary />,
+          },
+        ],
+      },
       {
         path: "*",
         element: <NotFound />,
@@ -57,16 +66,6 @@ export const userRoutes = createBrowserRouter([
       {
         path: "/auth/register",
         element: <RegisterPage />,
-      },
-    ],
-  },
-  {
-    path: "/plan",
-    element: <UserLayoutPage />,
-    children: [
-      {
-        path: "setup",
-        element: <TripPlanFormPage />,
       },
     ],
   },

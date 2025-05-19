@@ -21,13 +21,10 @@ const withAuth = <T extends WithAuthProps>(
     }
 
     if (isError) {
-      console.log(isError, "should redirect");
       return (
         <Navigate to={"/auth"} state={{ from: location.pathname }} replace />
       );
     }
-
-    console.log("no redirect");
 
     return <Component {...(props as T)} user={data?.user} />;
   };
