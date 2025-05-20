@@ -18,10 +18,34 @@ export const tripPlan = {
 			description:
 				"Settle in, grab your e-bike, and start with the nearest wonders.",
 			activities: [
-				"Check-in to Hotel Yadanarbon",
-				"Visit Dhammayangyi Temple",
-				"Watch sunset from Shwesandaw Pagoda",
-				"Dinner at Sanon Training Restaurant",
+				{
+					id: 1,
+					name: "Check-in to Hotel Yadanarbon",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Visit Dhammayangyi Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Watch sunset from Shwesandaw Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Dinner at Sanon Training Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
 			],
 			estimated_day_budget: 80000,
 		},
@@ -32,10 +56,34 @@ export const tripPlan = {
 			place: "Old Bagan",
 			description: "Full day of exploration with a cultural evening.",
 			activities: [
-				"Ananda Temple",
-				"Thatbyinnyu Pagoda",
-				"Lunch at The Moon Vegetarian Restaurant",
-				"Evening Puppet Show at Nanda Restaurant",
+				{
+					id: 4,
+					name: "Ananda Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Thatbyinnyu Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Lunch at The Moon Vegetarian Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Evening Puppet Show at Nanda Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
 			],
 			estimated_day_budget: 100000,
 		},
@@ -47,11 +95,185 @@ export const tripPlan = {
 			description:
 				"Wrap up your journey with local shopping and scenic vibes.",
 			activities: [
-				"Early walk to Nyaung-U Market",
-				"Souvenir shopping (lacquerware, postcards)",
-				"Return to Yangon by JJ Express night bus",
+				{
+					id: 1,
+					name: "Early walk to Nyaung-U Market",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Souvenir shopping (lacquerware, postcards)",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Return to Yangon by JJ Express night bus",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
 			],
 			estimated_day_budget: 70000,
+		},
+		{
+			day: 4,
+			date: "2025-06-04",
+			title: "Arrival & Golden Hour Exploration",
+			place: "New Bagan",
+			description:
+				"Settle in, grab your e-bike, and start with the nearest wonders.",
+			activities: [
+				{
+					id: 1,
+					name: "Check-in to Hotel Yadanarbon",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Visit Dhammayangyi Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Watch sunset from Shwesandaw Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Dinner at Sanon Training Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+			],
+			estimated_day_budget: 80000,
+		},
+		{
+			day: 5,
+			date: "2025-06-05",
+			title: "Arrival & Golden Hour Exploration",
+			place: "New Bagan",
+			description:
+				"Settle in, grab your e-bike, and start with the nearest wonders.",
+			activities: [
+				{
+					id: 1,
+					name: "Check-in to Hotel Yadanarbon",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Visit Dhammayangyi Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Watch sunset from Shwesandaw Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Dinner at Sanon Training Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+			],
+			estimated_day_budget: 80000,
+		},
+		{
+			day: 6,
+			date: "2025-06-06",
+			title: "Arrival & Golden Hour Exploration",
+			place: "New Bagan",
+			description:
+				"Settle in, grab your e-bike, and start with the nearest wonders.",
+			activities: [
+				{
+					id: 1,
+					name: "Check-in to Hotel Yadanarbon",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Visit Dhammayangyi Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Watch sunset from Shwesandaw Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Dinner at Sanon Training Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+			],
+			estimated_day_budget: 80000,
+		},
+		{
+			day: 7,
+			date: "2025-06-07",
+			title: "Arrival & Golden Hour Exploration",
+			place: "New Bagan",
+			description:
+				"Settle in, grab your e-bike, and start with the nearest wonders.",
+			activities: [
+				{
+					id: 1,
+					name: "Check-in to Hotel Yadanarbon",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 2,
+					name: "Visit Dhammayangyi Temple",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 3,
+					name: "Watch sunset from Shwesandaw Pagoda",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+				{
+					id: 4,
+					name: "Dinner at Sanon Training Restaurant",
+					description:
+						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
+					location: "Nyaung Oo, Bar Mathi Street",
+				},
+			],
+			estimated_day_budget: 80000,
 		},
 	],
 

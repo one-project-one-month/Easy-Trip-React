@@ -13,14 +13,13 @@ export type DayPlanProps = {
 	title: string;
 	place: string;
 	description: string;
-	activities: string[];
-	estimated_day_budget: number;
+	activities: Activity[];
+	estimated_day_budget?: number;
 };
 
-export type Activity = {
+interface Activity {
 	id: number;
-	destination: string;
-	desscription: string;
-	time: string;
+	name: string;
+	description: string;
 	location?: string;
-};
+}

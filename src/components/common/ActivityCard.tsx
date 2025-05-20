@@ -7,7 +7,7 @@ export default function ActivityCard({ name }: { name: string }) {
 				<div className="self-center">Icon</div>
 				<div className="">
 					<CardContent>
-						<h1 className="text-lg">{name}</h1>
+						<h1 className="lg:text-lg max-sm:text-sm">{name}</h1>
 					</CardContent>
 				</div>
 			</section>
