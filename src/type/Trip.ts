@@ -17,7 +17,7 @@ export type DayPlanProps = {
 	estimated_day_budget?: number;
 };
 
-interface Activity {
+export interface Activity {
 	id: number;
 	name: string;
 	description: string;

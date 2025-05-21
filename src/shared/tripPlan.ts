@@ -29,8 +29,7 @@ export const tripPlan = {
 					id: 2,
 					name: "Visit Dhammayangyi Temple",
 					description:
-						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
-					location: "Nyaung Oo, Bar Mathi Street",
+						'Gold Roger was known as the "Pirate King," the strongest and most infamous being to have sailed the Grand Line. The capture and execution of Roger by the World Government brought a change throughout the world. His last words before his death revealed th',
 				},
 				{
 					id: 3,
@@ -57,21 +56,21 @@ export const tripPlan = {
 			description: "Full day of exploration with a cultural evening.",
 			activities: [
 				{
-					id: 4,
+					id: 1,
 					name: "Ananda Temple",
 					description:
 						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
 					location: "Nyaung Oo, Bar Mathi Street",
 				},
 				{
-					id: 4,
+					id: 2,
 					name: "Thatbyinnyu Pagoda",
 					description:
 						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",
 					location: "Nyaung Oo, Bar Mathi Street",
 				},
 				{
-					id: 4,
+					id: 3,
 					name: "Lunch at The Moon Vegetarian Restaurant",
 					description:
 						"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, eius fugiat, iure perferendis dolor facilis, saepe ipsam ut deleniti vero voluptatibus illo nostrum? Facilis laborum excepturi quo incidunt repellendus minima!",

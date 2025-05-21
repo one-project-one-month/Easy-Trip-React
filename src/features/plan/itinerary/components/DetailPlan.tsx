@@ -12,9 +12,11 @@ import {
 import {
 	Card,
 	CardDescription,
+	CardContent,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 import Itinerary from "./Itinerary";
 
@@ -22,54 +24,61 @@ import { tripPlan } from "@/shared/tripPlan";
 
 export default function DetailPlan() {
 	return (
-		<main className="">
-			<div className="flex items-center gap-3">
-				<Button className="rounded-full">
+		<main>
+			<div className="flex items-center gap-3 mb-5">
+				<Button className="rounded-full" size="default">
 					<Link to="">
 						<ArrowLeft />
 					</Link>
 				</Button>
-				<h1 className="text-3xl">Find Out your Trip</h1>
+				<h1 className="text-lg md:text-3xl">Find Out your Trip</h1>
 			</div>
-			<br />
-			<section className="flex gap-5">
-				<div className="w-[50%]">
-					<Card className="gap-1 p-3 justify-between h-full  shadow-2xl">
-						<CardHeader className="p-0">
-							<CardTitle className="text-3xl">
-								{tripPlan.destination}
-							</CardTitle>
-							<CardDescription>4 Days Trip</CardDescription>
-						</CardHeader>
-						<h1 className="text-xl font-semibold">
+
+			<section className="flex flex-col md:flex-row gap-5 mb-5 ">
+				<div className="w-full md:w-[50%]">
+					<Card className="p-5 md:p-8 justify-between h-70 md:h-80 lg:h-96 shadow-2xl">
+						<div>
+							<CardHeader className="p-0 mb-2">
+								<CardTitle className="text-2xl lg:text-4xl font-bold">
+									{tripPlan.destination}
+								</CardTitle>
+								<CardDescription className="sm:text-lg">
+									{tripPlan.title}
+								</CardDescription>
+							</CardHeader>
+							<Separator />
+							<CardContent className="md::text-lg p-0 mt-2">
+								{tripPlan.description}
+							</CardContent>
+						</div>
+						<h1 className="md:text-xl font-bold ">
 							Total Cost : 2000 USD
 						</h1>
 					</Card>
 				</div>
-
-				<Carousel className="w-[50%]">
-					<CarouselContent>
-						<CarouselItem>
-							<img
-								src="https://bagandaytours.com/wp-content/uploads/2017/02/dhammayangyi-pahto-temple-1.jpg"
-								alt=""
-								className="w-full h-[200px]"
-							/>
-						</CarouselItem>
-						<CarouselItem>
-							<img
-								src="https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg"
-								alt=""
-								className="w-full h-[200px]"
-							/>
-						</CarouselItem>
-					</CarouselContent>
-					<CarouselPrevious />
-					<CarouselNext />
-				</Carousel>
+				<div className="w-full md:w-[50%]  rounded-2xl overflow-hidden">
+					<Carousel>
+						<CarouselContent>
+							<CarouselItem className="h-70 md:h-80 lg:h-96">
+								<img
+									src="https://bagandaytours.com/wp-content/uploads/2017/02/dhammayangyi-pahto-temple-1.jpg"
+									alt=""
+									className="rounded-2xl w-full h-full object-cover"
+								/>
+							</CarouselItem>
+							<CarouselItem className="h-70 md:h-80 lg:h-96">
+								<img
+									src="https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg"
+									alt=""
+									className="rounded-2xl w-full h-full object-cover"
+								/>
+							</CarouselItem>
+						</CarouselContent>
+						<CarouselPrevious />
+						<CarouselNext />
+					</Carousel>
+				</div>
 			</section>
-
-			<br />
 
 			<Itinerary plan={tripPlan.day_by_day_plan} />
 		</main>
