@@ -6,6 +6,5 @@ const ProtectedLayout = () => {
   return <Outlet />;
 };
 
-// const AuthenticatedLayout = withAuth(ProtectedLayout);
-const AuthenticatedLayout = ProtectedLayout;
+const AuthenticatedLayout = withAuth(ProtectedLayout);
 export default AuthenticatedLayout;
