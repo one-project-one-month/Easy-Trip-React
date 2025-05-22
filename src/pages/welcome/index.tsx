@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Welcome() {
   return (
-    <div className='w-full h-lvh flex relative justify-center items-center'>
-      <div className='flex flex-col justify-center items-center text-center gap-5'>
+    <div className='w-full h-full flex relative justify-center items-center'>
+      <div className='flex flex-col justify-center items-center text-center gap-5 mb-16'>
         <div className='text-xl md:text-2xl lg:text-5xl font-mono animate-fade-in tracking-wide lg:space-y-4 space-y-2'>
           <p className='lg:text-2xl md:text-xl text-base'>
             YOUR PERFECT <span className='text-blue-500'>TRIP,</span>

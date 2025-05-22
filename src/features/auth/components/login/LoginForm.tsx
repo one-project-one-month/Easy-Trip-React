@@ -63,6 +63,7 @@ export default function LoginForm() {
             name='email'
             label='Email'
             placeholder='Enter your name'
+            autoComplete='off'
           />
 
           <FormInput
@@ -71,6 +72,7 @@ export default function LoginForm() {
             label='Password'
             type='password'
             placeholder='Enter your password'
+            autoComplete='off'
           />
 
           <Button

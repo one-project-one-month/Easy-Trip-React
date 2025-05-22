@@ -4,11 +4,13 @@ import Navbar from "./Navbar";
 
 const PublicLayout = () => {
   return (
-    <div>
+    <main className='flex flex-col min-h-screen h-screen'>
       <Navbar />
 
-      <Outlet />
-    </div>
+      <section className='flex-1 container mx-auto px-4'>
+        <Outlet />
+      </section>
+    </main>
   );
 };
 

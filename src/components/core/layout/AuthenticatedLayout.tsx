@@ -1,17 +1,11 @@
 import { Outlet } from "react-router";
 
 import withAuth from "@/features/withAuth";
-import Navbar from "./Navbar";
 
 const ProtectedLayout = () => {
-  return (
-    <div>
-      <Navbar />
-
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 };
 
-const AuthenticatedLayout = withAuth(ProtectedLayout);
+// const AuthenticatedLayout = withAuth(ProtectedLayout);
+const AuthenticatedLayout = ProtectedLayout;
 export default AuthenticatedLayout;

@@ -25,6 +25,7 @@ const Welcome = PageLoader(lazy(() => import("@/pages/welcome")));
 
 const Setup = PageLoader(lazy(() => import("@/pages/plan/setup")));
 const Itinerary = PageLoader(lazy(() => import("@/pages/plan/itinerary")));
+const Init = PageLoader(lazy(() => import("@/pages/plan/init")));
 
 export const userRoutes = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const userRoutes = createBrowserRouter([
           {
             path: "itinerary",
             element: <Itinerary />,
+          },
+          {
+            path: "init",
+            element: <Init />,
           },
         ],
       },

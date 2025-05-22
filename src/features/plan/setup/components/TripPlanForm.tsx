@@ -61,60 +61,58 @@ export default function TripPlanForm() {
   };
 
   return (
-    <div className='w-full h-lvh grid items-center justify-center py-10'>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmint)}
-          className='w-full max-w-2xl p-8 bg-white md:shadow-2xl rounded-2xl space-y-8 animate-fade-in'
-        >
-          <div className='text-start'>
-            <h1 className='text-4xl font-bold text-gray-800 mb-3'>
-              Tell Us Your Travel Preferences
-            </h1>
-            <p className='text-gray-600 p-1 text-sm'>
-              Just provide some basic information, and our trip planner will
-              generate a customized itinerary based on your preferences.
-            </p>
-          </div>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmint)}
+        className='w-full max-w-2xl p-8 bg-white md:shadow-2xl rounded-2xl space-y-8 animate-fade-in'
+      >
+        <div className='text-start'>
+          <h1 className='text-4xl font-bold text-gray-800 mb-3'>
+            Tell Us Your Travel Preferences
+          </h1>
+          <p className='text-gray-600 p-1 text-sm'>
+            Just provide some basic information, and our trip planner will
+            generate a customized itinerary based on your preferences.
+          </p>
+        </div>
 
-          <div className='flex items-start gap-3'>
-            <FormDateRangePicker
-              form={form}
-              name='date'
-              label='When are you going?'
-              className='w-full'
-              required
-            />
-
-            <FormNumberStepper
-              form={form}
-              name='budget'
-              label='Your budget (MMK)'
-              min={100000}
-              step={100000}
-              required
-            />
-          </div>
-
-          <FormCardRadioGroup
+        <div className='flex items-start gap-3'>
+          <FormDateRangePicker
             form={form}
-            name='attendanceType'
-            label='Who are you travelling with?'
-            options={attendanceOptions}
-            radioClassName='grid grid-cols-4 gap-3'
+            name='date'
+            label='When are you going?'
             className='w-full'
             required
           />
 
-          <Button
-            type='submit'
-            className='w-full flex gap-2 items-center justify-center text-base font-semibold'
-          >
-            <span>Generate</span>
-            <Sparkles size={20} />
-          </Button>
-        </form>
-      </Form>
-    </div>
+          <FormNumberStepper
+            form={form}
+            name='budget'
+            label='Your budget (MMK)'
+            min={100000}
+            step={100000}
+            required
+          />
+        </div>
+
+        <FormCardRadioGroup
+          form={form}
+          name='attendanceType'
+          label='Who are you travelling with?'
+          options={attendanceOptions}
+          radioClassName='grid grid-cols-4 gap-3'
+          className='w-full'
+          required
+        />
+
+        <Button
+          type='submit'
+          className='w-full flex gap-2 items-center justify-center text-base font-semibold'
+        >
+          <span>Generate</span>
+          <Sparkles size={20} />
+        </Button>
+      </form>
+    </Form>
   );
 }
