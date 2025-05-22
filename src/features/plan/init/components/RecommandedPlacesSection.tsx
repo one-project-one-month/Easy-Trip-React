@@ -1,6 +1,18 @@
+import useGetPopularPlace from "../../hooks/useGetPopularPlace";
 import RecommendPlaceCard from "./RecommendPlaceCard";
 
+import { Destination } from "@/type/Destination";
+
+
 function RecommandedPlacesSection() {
+
+
+  const {data, isLoading} = useGetPopularPlace();
+
+  if(isLoading) {
+    return <div>Loading..</div>
+  }
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 py-12">
       <div className="mb-6">
@@ -13,8 +25,8 @@ function RecommandedPlacesSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <RecommendPlaceCard key={index} />
+        {data.content.length > 0 && data.content.map((destination: Destination, index: number) => (
+          <RecommendPlaceCard data={destination} key={index} />
         ))}
       </div>
     </section>
