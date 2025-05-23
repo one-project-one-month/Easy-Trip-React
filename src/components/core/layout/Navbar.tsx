@@ -9,7 +9,7 @@ export default function Navbar() {
   const token = getAccessToken();
 
   return (
-    <nav className='sticky top-0 left-0 bg-accent-foreground text-accent'>
+    <nav className='sticky z-20 top-0 left-0 bg-accent-foreground text-accent'>
       <div className='h-16 flex items-center justify-between container mx-auto px-3'>
         <Link className='text-xl font-semibold' to='/'>
           Easy Trip
