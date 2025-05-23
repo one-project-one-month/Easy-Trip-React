@@ -7,11 +7,22 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import useAppSettingStore from "@/store/appSettingStore";
 // import { Image } from "lucide-react";
 
 import { Destination } from "@/type/Destination";
+import { useNavigate } from "react-router";
 
 function RecommendPlaceCard({data}: {data: Destination}) {
+
+  const {setDestinationSetting} = useAppSettingStore();
+  const navigate = useNavigate();
+
+
+  const handleSelect = () => {
+    setDestinationSetting(data.destination);
+    navigate("/plan/setup");
+  }
 
 
   return (
@@ -35,7 +46,7 @@ function RecommendPlaceCard({data}: {data: Destination}) {
 
       <CardFooter className="px-5 pt-3">
         <CardAction className="w-full">
-          <Button className="w-full bg-primary text-white hover:bg-primary/90 transition">
+          <Button onClick={handleSelect} className="w-full bg-primary text-white hover:bg-primary/90 transition">
             Select
           </Button>
         </CardAction>

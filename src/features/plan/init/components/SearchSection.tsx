@@ -78,7 +78,7 @@ function SearchSection() {
           />
         </div>
         <Button onClick={handleSearch} disabled={!(destination.length > 0)} className="rounded-full h-12 text-base px-8 shadow-md bg-primary text-white hover:bg-primary/90 transition">
-          Search
+          Confirm
         </Button>
       </section>
     </>

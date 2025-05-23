@@ -22,4 +22,7 @@ const useAppSettingStore = create<AppSettingStore>()(
 );
 
 
+export const getDestination = () => useAppSettingStore.getState().destination;
+
+
 export default useAppSettingStore;
