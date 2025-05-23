@@ -1,4 +1,3 @@
-import { redirect } from "react-router";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 
 import AppConfig from "@/config/AppConfig";
@@ -50,7 +49,7 @@ API.interceptors.response.use(
       if (!refreshToken) {
         logout();
 
-        return redirect("/auth");
+        return Promise.reject(error);
       }
 
       try {
@@ -66,9 +65,9 @@ API.interceptors.response.use(
           Authorization: `Bearer ${newAccessToken}`,
         };
         return API(originalRequest);
-      } catch {
+      } catch (refreshError) {
         logout();
-        return redirect("/auth");
+        return Promise.reject(refreshError);
       }
     }
 
