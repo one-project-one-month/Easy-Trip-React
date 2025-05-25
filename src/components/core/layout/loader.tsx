@@ -14,7 +14,7 @@ const Loader: React.FC<LoaderProps> = ({ className }) => {
         className
       )}
     >
-      <PuffLoader color='hsl(217, 100%, 59%)' />
+      <PuffLoader color="hsl(217, 100%, 59%)" />
     </div>
   );
 };

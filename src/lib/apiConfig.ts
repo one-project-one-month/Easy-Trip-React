@@ -22,7 +22,7 @@ const API: AxiosInstance = axios.create({
 const { setAccessToken, logout } = useAuthStore.getState();
 
 API.interceptors.request.use(
-  (config) => {
+  config => {
     const token = getAccessToken();
 
     if (token?.trim().length) {
@@ -36,7 +36,7 @@ API.interceptors.request.use(
 );
 
 API.interceptors.response.use(
-  (response) => response,
+  response => response,
 
   async (error: AxiosError) => {
     const originalRequest = error.config as AuthRequestConfig;

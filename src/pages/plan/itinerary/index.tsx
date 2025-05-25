@@ -1,6 +1,7 @@
 import { useGenerateThingsYouShouldKnow } from "@/features/plan/hooks/usePlan";
 import DetailPlan from "@/features/plan/itinerary/components/DetailPlan";
 import useAppSettingStore from "@/store/appSettingStore";
+import withDestination from "@/features/withDestination";
 
 function TripPlan() {
   const destination = useAppSettingStore(s => s.destination);
@@ -21,6 +22,7 @@ function TripPlan() {
     );
   }
 
+  console.log("destination", destination);
   console.log("data", data);
 
   return (
@@ -30,4 +32,5 @@ function TripPlan() {
   );
 }
 
-export default TripPlan;
+const TripPlanPage = withDestination(TripPlan);
+export default TripPlanPage;

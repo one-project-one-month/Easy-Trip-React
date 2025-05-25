@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { CheckboxProps } from "@radix-ui/react-checkbox";
@@ -46,12 +45,12 @@ const FormCardCheckboxGroup = <TValues extends FieldValues>({
   return (
     <div className={cn("flex flex-col gap-2", wrapperClassName)}>
       <FormLabel className={cn("text-gray-700 font-medium", labelClassName)}>
-        {label} {props.required && <span className='text-red-500'>*</span>}
+        {label} {props.required && <span className="text-red-500">*</span>}
       </FormLabel>
 
-      <div className='space-y-2'>
-        <div className='flex items-center gap-2'>
-          {options.map((item) => (
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          {options.map(item => (
             <FormField
               key={String(item.value)}
               control={form.control}
@@ -66,7 +65,7 @@ const FormCardCheckboxGroup = <TValues extends FieldValues>({
                     <FormControl className="[&_[data-slot='form-item']>button:first-child]:!hidden">
                       <Checkbox
                         checked={field.value?.includes(item.value)}
-                        onCheckedChange={(checked) => {
+                        onCheckedChange={checked => {
                           const currentValue = field.value || [];
 
                           return checked
@@ -77,12 +76,12 @@ const FormCardCheckboxGroup = <TValues extends FieldValues>({
                                 )
                               );
                         }}
-                        className='hidden'
+                        className="hidden"
                         {...props}
                       />
                     </FormControl>
 
-                    <FormLabel className='font-normal cursor-pointer'>
+                    <FormLabel className="font-normal cursor-pointer">
                       <Card
                         className={cn(
                           "w-40 flex items-center transition-all justify-center space-y-0 relative",
@@ -94,13 +93,13 @@ const FormCardCheckboxGroup = <TValues extends FieldValues>({
                           }
                         )}
                       >
-                        <div className='flex flex-col items-center justify-center gap-1'>
-                          <p className='text-base font-semibold'>
+                        <div className="flex flex-col items-center justify-center gap-1">
+                          <p className="text-base font-semibold">
                             {item.label}
                           </p>
 
                           {item.info && (
-                            <span className='text-xs text-neutral-600'>
+                            <span className="text-xs text-neutral-600">
                               {item.info}
                             </span>
                           )}
@@ -127,7 +126,7 @@ const FormCardCheckboxGroup = <TValues extends FieldValues>({
         </div>
 
         {form.formState.errors[name] && (
-          <FormMessage className='text-xs'>
+          <FormMessage className="text-xs">
             {form?.formState?.errors?.[name]?.message as string}
           </FormMessage>
         )}

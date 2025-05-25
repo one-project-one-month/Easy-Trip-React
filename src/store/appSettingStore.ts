@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
 
 export type DestinationDetail = {
   destination_id?: string;
@@ -14,25 +13,15 @@ type AppSettingStore = {
   setDestinationSetting: (value: Partial<DestinationDetail>) => void;
 };
 
-const useAppSettingStore = create<AppSettingStore>()(
-  persist(
-    (set, get) => ({
-      destination: undefined,
-      setDestinationSetting: value => {
-        const prev = get().destination || {};
-        set({
-          destination: {
-            ...prev,
-            ...value,
-          },
-        });
+const useAppSettingStore = create<AppSettingStore>(set => ({
+  destination: undefined,
+  setDestinationSetting: value =>
+    set(state => ({
+      destination: {
+        ...state.destination,
+        ...value,
       },
-    }),
-    {
-      name: "app-setting",
-      storage: createJSONStorage(() => localStorage),
-    }
-  )
-);
+    })),
+}));
 
 export default useAppSettingStore;

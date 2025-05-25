@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Handshake, Heart, Sparkles, User2, UsersRound } from "lucide-react";
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
 import { isBefore, startOfToday } from "date-fns";
 
 import { Form } from "@/components/ui/form";
@@ -71,13 +70,9 @@ export default function TripPlanForm() {
 
   const navigate = useNavigate();
 
-  const { destination, setDestinationSetting } = useAppSettingStore();
-
-  useEffect(() => {
-    if (!destination?.destination_id) {
-      navigate("/plan/init");
-    }
-  }, [destination, navigate]);
+  const setDestinationSetting = useAppSettingStore(
+    s => s.setDestinationSetting
+  );
 
   const onSubmit = (data: TripPlanValue) => {
     setDestinationSetting({

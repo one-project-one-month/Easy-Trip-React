@@ -37,7 +37,7 @@ const FormInput = <TValues extends FieldValues>({
   const [showPassword, setShowPassword] = useState(false);
 
   const handleViewPassword = () => {
-    setShowPassword((prev) => (prev ? false : true));
+    setShowPassword(prev => (prev ? false : true));
   };
 
   return (
@@ -53,7 +53,7 @@ const FormInput = <TValues extends FieldValues>({
           </FormLabel>
 
           <FormControl>
-            <div className='relative'>
+            <div className="relative">
               <Input
                 type={type === "password" && showPassword ? "text" : type}
                 {...field}
@@ -67,14 +67,14 @@ const FormInput = <TValues extends FieldValues>({
               {type === "password" && (
                 <span
                   onClick={handleViewPassword}
-                  className='absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all'
+                  className="absolute z-10 cursor-pointer right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all"
                 >
                   {showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
                 </span>
               )}
             </div>
           </FormControl>
-          <FormMessage className='text-xs' />
+          <FormMessage className="text-xs" />
         </FormItem>
       )}
     />

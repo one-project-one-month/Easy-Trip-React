@@ -13,7 +13,7 @@ type AuthStore = {
 
 const useAuthStore = create<AuthStore>()(
   persist(
-    (set) => ({
+    set => ({
       accessToken: null,
       refreshToken: null,
       setAccessToken: (

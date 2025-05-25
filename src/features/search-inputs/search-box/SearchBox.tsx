@@ -47,10 +47,13 @@ export default function SearchBox<T extends string>({
 
   const labels = useMemo(
     () =>
-      items.reduce((acc, item) => {
-        acc[item.value] = item.label;
-        return acc;
-      }, {} as Record<string, string>),
+      items.reduce(
+        (acc, item) => {
+          acc[item.value] = item.label;
+          return acc;
+        },
+        {} as Record<string, string>
+      ),
     [items]
   );
 
@@ -80,7 +83,7 @@ export default function SearchBox<T extends string>({
 
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("value is ", e.target.value);
-    const newItems = items.filter((item) =>
+    const newItems = items.filter(item =>
       item.label
         .toLocaleLowerCase()
         .includes(e.target.value.toLocaleLowerCase())
@@ -97,8 +100,8 @@ export default function SearchBox<T extends string>({
               asChild
               value={inputValue}
               onValueChange={setInputValue}
-              onKeyDown={(e) => setOpen(e.key !== "Escape")}
-              onMouseDown={() => setOpen((open) => !!inputValue || !open)}
+              onKeyDown={e => setOpen(e.key !== "Escape")}
+              onMouseDown={() => setOpen(open => !!inputValue || !open)}
               onFocus={() => setOpen(true)}
               onBlur={onInputBlur}
               className="bg-black text-white py-3 rounded-full min-w-[250px]"
@@ -109,8 +112,8 @@ export default function SearchBox<T extends string>({
           {!open && <CommandList aria-hidden="true" className="hidden" />}
           <PopoverContent
             asChild
-            onOpenAutoFocus={(e) => e.preventDefault()}
-            onInteractOutside={(e) => {
+            onOpenAutoFocus={e => e.preventDefault()}
+            onInteractOutside={e => {
               if (
                 e.target instanceof Element &&
                 e.target.hasAttribute("cmdk-input")
@@ -132,11 +135,11 @@ export default function SearchBox<T extends string>({
               )}
               {itemsToShow.length > 0 && !isLoading ? (
                 <CommandGroup>
-                  {itemsToShow.map((item) => (
+                  {itemsToShow.map(item => (
                     <CommandItem
                       key={item.value}
                       value={item.value}
-                      onMouseDown={(e) => e.preventDefault()}
+                      onMouseDown={e => e.preventDefault()}
                       onSelect={onSelectItem}
                       className="bg-gray-800 my-[5px] mx-[2px] text-white"
                     >

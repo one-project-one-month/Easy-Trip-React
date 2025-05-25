@@ -32,8 +32,8 @@ class AppErrorBoundary extends Component<AppErrorBoundaryWithChildren> {
     if (this.state.hasError) {
       if (this.state.error) {
         if (this.state.error instanceof Error) {
-          console.log(this.state.error, "error ==>")
-        //   return <ErrorHandler statusCode={this.state.error.statusCode} />;
+          console.log(this.state.error, "error ==>");
+          //   return <ErrorHandler statusCode={this.state.error.statusCode} />;
           return <ErrorHandler statusCode={StatusCode.InternalServerError} />;
         }
       }

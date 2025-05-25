@@ -78,7 +78,7 @@ const FormNumberStepper = <TValues extends FieldValues>({
                   }
                 }}
                 value={inputValue || String(field.value ?? min)}
-                onChange={(e) => {
+                onChange={e => {
                   field.onChange(0);
                   const formattedValue = Number(
                     e.target.value.replace(/[^0-9]/g, "")

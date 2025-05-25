@@ -24,10 +24,10 @@
     "noUncheckedSideEffectImports": true,
     // set alias
     "paths": {
-      "@/*" : ["./*"],   
+      "@/*": ["./*"]
     },
     "outDir": "dist",
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "include": ["src"]
 }

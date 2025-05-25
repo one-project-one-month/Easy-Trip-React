@@ -53,25 +53,25 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
             className={cn("text-gray-700 font-medium", labelClassName)}
           >
             {label}
-            {props.required && <span className='text-red-500'>*</span>}
+            {props.required && <span className="text-red-500">*</span>}
           </FormLabel>
 
-          <FormControl className='w-full'>
+          <FormControl className="w-full">
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className={cn('flex items-center gap-2', radioClassName)}
+              className={cn("flex items-center gap-2", radioClassName)}
             >
-              {options.map((item) => (
+              {options.map(item => (
                 <FormItem key={item.value.toLocaleString()}>
                   <FormControl>
                     <RadioGroupItem
                       value={item.value.toLocaleString()}
-                      className='hidden'
+                      className="hidden"
                     />
                   </FormControl>
 
-                  <FormLabel className='font-normal cursor-pointer'>
+                  <FormLabel className="font-normal cursor-pointer">
                     <Card
                       className={cn(
                         "w-40 flex items-center transition-all justify-center space-y-0 relative",
@@ -81,11 +81,11 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
                         }
                       )}
                     >
-                      <div className='flex flex-col items-center justify-center gap-1'>
-                        <p className='text-base font-semibold'>{item.label}</p>
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <p className="text-base font-semibold">{item.label}</p>
 
                         {item.info && (
-                          <span className='text-xs text-neutral-600'>
+                          <span className="text-xs text-neutral-600">
                             {item.info}
                           </span>
                         )}
@@ -106,7 +106,7 @@ const FormCardRadioGroup = <TValues extends FieldValues>({
               ))}
             </RadioGroup>
           </FormControl>
-          <FormMessage className='text-xs' />
+          <FormMessage className="text-xs" />
         </FormItem>
       )}
     />

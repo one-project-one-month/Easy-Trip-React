@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router";
+import { Navigate, useLocation } from "react-router";
 
 import { useGetUser } from "@/features/auth/hooks/useAuth";
 import { Loader } from "@/components/core/layout";
@@ -15,8 +15,9 @@ const withAuth = <T extends WithAuthProps>(
   Component: React.ComponentType<T>
 ) => {
   return function AuthenticatedComponent(props: Omit<T, keyof WithAuthProps>) {
-    const { data, isError, isLoading } = useGetUser();
+    const location = useLocation();
     const token = useAuthStore(s => s.accessToken);
+    const { data, isError, isLoading } = useGetUser(token);
 
     if (isLoading) {
       return <Loader />;

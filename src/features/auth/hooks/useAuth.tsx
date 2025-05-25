@@ -29,10 +29,12 @@ export function useRegister() {
   });
 }
 
-export function useGetUser() {
+export function useGetUser(token: string | null) {
   return useQuery({
     queryKey: ["get-user"],
     queryFn: getUser,
+    staleTime: 1000 * 60 * 10,
+    enabled: !token,
   });
 }
 
