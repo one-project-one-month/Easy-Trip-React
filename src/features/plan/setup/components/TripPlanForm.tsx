@@ -2,15 +2,17 @@ import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Handshake, Heart, Sparkles, User2, UsersRound } from "lucide-react";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { isBefore, startOfToday } from "date-fns";
 
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import FormDateRangePicker from "@/components/common/form-inputs/FormDateRangePicker";
 import FormCardRadioGroup from "@/components/common/form-inputs/FormCardRadioGroup";
 import FormNumberStepper from "@/components/common/form-inputs/FormNumberStepper";
+
 import { getDestination } from "@/store/appSettingStore";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
 import { getTodayDate } from "@/lib/helper";
 
 const todayDate = getTodayDate();
@@ -21,7 +23,7 @@ const TripPlanSchema = z.object({
       from: z
         .string()
         .min(1)
-        .refine((val) => val >= todayDate, {
+        .refine(val => val >= todayDate, {
           message: "Date can't be in the past",
         }),
       to: z.string().min(1),
@@ -75,16 +77,16 @@ export default function TripPlanForm() {
     if (!destination) {
       navigate("/plan/init");
     }
-  }, [destination]);
+  }, [destination, navigate]);
 
-  const handleSubmint = (data: TripPlanValue) => {
-    console.log({...data, destination});
+  const onSubmit = (data: TripPlanValue) => {
+    console.log({ ...data, destination });
   };
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(handleSubmint)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="w-full max-w-2xl p-8 bg-white md:shadow-2xl rounded-2xl space-y-8 animate-fade-in"
       >
         <div className="text-start">
@@ -103,6 +105,7 @@ export default function TripPlanForm() {
             name="date"
             label="When are you going?"
             className="w-full"
+            disabled={(date: Date) => isBefore(date, startOfToday())}
             required
           />
 
@@ -128,7 +131,7 @@ export default function TripPlanForm() {
 
         <Button
           type="submit"
-          className="w-full flex gap-2 items-center justify-center text-base font-semibold"
+          className="w-full flex gap-2 items-center justify-center text-base font-semibold cursor-pointer"
         >
           <span>Generate</span>
           <Sparkles size={20} />

@@ -5,6 +5,7 @@ import { useGetUser } from "@/features/auth/hooks/useAuth";
 import { Loader } from "@/components/core/layout";
 
 import { User } from "@/type/Auth";
+import useAuthStore from "@/store/authStore";
 
 export type WithAuthProps = {
   user?: User;
@@ -15,12 +16,13 @@ const withAuth = <T extends WithAuthProps>(
 ) => {
   return function AuthenticatedComponent(props: Omit<T, keyof WithAuthProps>) {
     const { data, isError, isLoading } = useGetUser();
+    const token = useAuthStore(s => s.accessToken);
 
     if (isLoading) {
       return <Loader />;
     }
 
-    if (isError) {
+    if (isError || !token) {
       return (
         <Navigate to={"/auth"} state={{ from: location.pathname }} replace />
       );

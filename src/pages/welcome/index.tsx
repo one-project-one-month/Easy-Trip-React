@@ -25,7 +25,7 @@ export default function Welcome() {
         </div>
 
         <Button asChild size={"lg"}>
-          <Link to="/plan/setup">Get Started</Link>
+          <Link to="/plan/init">Get Started</Link>
         </Button>
       </div>
 
