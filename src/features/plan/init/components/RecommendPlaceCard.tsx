@@ -1,58 +1,81 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import useAppSettingStore from "@/store/appSettingStore";
-// import { Image } from "lucide-react";
-
-import { Destination } from "@/type/Destination";
+import { Navigation } from "lucide-react";
 import { useNavigate } from "react-router";
 
-function RecommendPlaceCard({data}: {data: Destination}) {
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
-  const {setDestinationSetting} = useAppSettingStore();
+import useAppSettingStore from "@/store/appSettingStore";
+import { Destination } from "@/type/Destination";
+
+function RecommendPlaceCard({ data }: { data: Destination }) {
+  const { setDestinationSetting } = useAppSettingStore();
   const navigate = useNavigate();
 
-
   const handleSelect = () => {
-    setDestinationSetting(data.destination);
+    setDestinationSetting({
+      destination_id: data._id,
+    });
     navigate("/plan/setup");
-  }
-
+  };
 
   return (
-    <Card className="w-full pt-0 max-w-xs rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="p-0">
-        <div className="h-40 w-full bg-neutral-100 flex justify-center items-center border-b">
+    <Card className="py-0 overflow-hidden h-fit group rounded-lg">
+      <CardContent className="space-y-4 px-0 pb-2">
+        <figure className="h-2/3 overflow-hidden">
           <img
-                src='https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg'
-                alt=''
-                className='w-full bg-cover mx-auto'
-              />
-        </div>
-      </CardHeader>
+            src="https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg"
+            alt=""
+            className="w-full h-full object-cover group-hover:scale-105 transition-all"
+          />
+        </figure>
 
-      <CardContent className="px-5 pt-2">
-        <h2 className="text-xl font-bold text-neutral-800">{data.destination_name}</h2>
-        <CardDescription className="mt-1 text-neutral-600">
-          <span>{data.state_region}</span>
-        </CardDescription>
-      </CardContent>
+        <div className="flex justify-between px-3 items-end">
+          <div>
+            <p className="text-lg font-bold leading-4">
+              {data.destination_name}
+            </p>
 
-      <CardFooter className="px-5 pt-3">
-        <CardAction className="w-full">
-          <Button onClick={handleSelect} className="w-full bg-primary text-white hover:bg-primary/90 transition">
-            Select
+            <span className="text-xs text-neutral-600">
+              {data.state_region}
+            </span>
+          </div>
+
+          <Button
+            onClick={handleSelect}
+            className="cursor-pointer"
+            variant={"outline"}
+            size={"icon"}
+          >
+            <Navigation />
           </Button>
-        </CardAction>
-      </CardFooter>
+        </div>
+      </CardContent>
     </Card>
   );
 }
+
+RecommendPlaceCard.Skeleton = () => {
+  return (
+    <Card className="py-0 overflow-hidden h-fit rounded-lg">
+      <CardContent className="space-y-4 px-0 pb-2">
+        {/* Image placeholder */}
+        <Skeleton className="h-40 w-full" />
+
+        <div className="flex justify-between px-3 items-center">
+          <div className="space-y-2">
+            {/* Title skeleton */}
+            <Skeleton className="h-4 w-32" />
+            {/* Region skeleton */}
+            <Skeleton className="h-3 w-20" />
+          </div>
+
+          {/* Icon button skeleton */}
+          <Skeleton className="h-10 w-10 rounded-md" />
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default RecommendPlaceCard;

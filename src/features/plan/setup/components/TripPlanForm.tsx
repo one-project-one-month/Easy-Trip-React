@@ -12,7 +12,7 @@ import FormDateRangePicker from "@/components/common/form-inputs/FormDateRangePi
 import FormCardRadioGroup from "@/components/common/form-inputs/FormCardRadioGroup";
 import FormNumberStepper from "@/components/common/form-inputs/FormNumberStepper";
 
-import { getDestination } from "@/store/appSettingStore";
+import useAppSettingStore from "@/store/appSettingStore";
 import { getTodayDate } from "@/lib/helper";
 
 const todayDate = getTodayDate();
@@ -36,22 +36,22 @@ const TripPlanSchema = z.object({
 
 const attendanceOptions = [
   {
-    value: "solo trip",
+    value: "alone",
     label: <User2 />,
     info: "Solo Trip",
   },
   {
-    value: "family trip",
+    value: "family",
     label: <UsersRound />,
     info: "Family Trip",
   },
   {
-    value: "partner trip",
+    value: "partner",
     label: <Heart />,
     info: "Partner Trip",
   },
   {
-    value: "friend trip",
+    value: "friend",
     label: <Handshake />,
     info: "Friend Trip",
   },
@@ -71,16 +71,23 @@ export default function TripPlanForm() {
 
   const navigate = useNavigate();
 
-  const destination = getDestination();
+  const { destination, setDestinationSetting } = useAppSettingStore();
 
   useEffect(() => {
-    if (!destination) {
+    if (!destination?.destination_id) {
       navigate("/plan/init");
     }
   }, [destination, navigate]);
 
   const onSubmit = (data: TripPlanValue) => {
-    console.log({ ...data, destination });
+    setDestinationSetting({
+      attendentsType: data.attendanceType,
+      budget: `${data.budget}MMK`,
+      startDate: data.date.from,
+      endDate: data.date.to,
+    });
+
+    navigate("/plan/itinerary");
   };
 
   return (
@@ -122,7 +129,7 @@ export default function TripPlanForm() {
         <FormCardRadioGroup
           form={form}
           name="attendanceType"
-          label="Who are you travelling with?"
+          label="Who are you traveling with?"
           options={attendanceOptions}
           radioClassName="grid grid-cols-4 gap-3"
           className="w-full"

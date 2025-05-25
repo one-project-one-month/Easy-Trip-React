@@ -1,17 +1,31 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+export type DestinationDetail = {
+  destination_id?: string;
+  startDate?: string;
+  endDate?: string;
+  budget?: string;
+  attendentsType?: string;
+};
+
 type AppSettingStore = {
-  destination: string;
-  setDestinationSetting: (value: string) => void;
+  destination?: DestinationDetail;
+  setDestinationSetting: (value: Partial<DestinationDetail>) => void;
 };
 
 const useAppSettingStore = create<AppSettingStore>()(
   persist(
-    (set) => ({
-      destination: "",
-      setDestinationSetting: (value: string) => {
-        set({ destination: value });
+    (set, get) => ({
+      destination: undefined,
+      setDestinationSetting: value => {
+        const prev = get().destination || {};
+        set({
+          destination: {
+            ...prev,
+            ...value,
+          },
+        });
       },
     }),
     {
@@ -20,9 +34,5 @@ const useAppSettingStore = create<AppSettingStore>()(
     }
   )
 );
-
-
-export const getDestination = () => useAppSettingStore.getState().destination;
-
 
 export default useAppSettingStore;

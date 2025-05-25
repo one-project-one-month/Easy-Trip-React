@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import { Search } from "lucide-react";
 import SearchValueBox from "./SearchValueBox";
-import useSearchPlace from "../../hooks/useSearchPlace";
+import { useSearchPlace } from "../../hooks/usePlan";
 import useAppSettingStore from "@/store/appSettingStore";
 import { useNavigate } from "react-router";
 
@@ -15,10 +15,12 @@ function SearchSection() {
   const [input, setInput] = useState<string>("");
   const [isShow, setIsShow] = useState<boolean>(false);
 
-  const {setDestinationSetting} = useAppSettingStore();
-  const navigate = useNavigate()
+  const { setDestinationSetting } = useAppSettingStore();
+  const navigate = useNavigate();
 
-  const { data, refetch, isLoading } = useSearchPlace(searchValue? searchValue.toLowerCase(): "");
+  const { data, refetch, isLoading } = useSearchPlace(
+    searchValue ? searchValue.toLowerCase() : ""
+  );
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -36,11 +38,10 @@ function SearchSection() {
     }
   }, [searchValue, refetch]);
 
-
   const handleSearch = () => {
-    setDestinationSetting(destination);
-    navigate("/plan/setup")
-  }
+    setDestinationSetting({ destination_id: destination });
+    navigate("/plan/setup");
+  };
 
   return (
     <>
@@ -67,9 +68,9 @@ function SearchSection() {
           <Input
             className="rounded-full pl-12 pr-4 py-4 h-12 shadow-md text-base focus:ring-2 focus:ring-primary"
             type="text"
-            onFocus={() => setIsShow(prev => prev?? false)}
+            onFocus={() => setIsShow(prev => prev ?? false)}
             onClick={() => setIsShow(prev => !prev)}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={e => setInput(e.target.value)}
             placeholder="Search destinations, cities, or landmarks"
           />
           <Search
@@ -77,7 +78,11 @@ function SearchSection() {
             size={20}
           />
         </div>
-        <Button onClick={handleSearch} disabled={!(destination.length > 0)} className="rounded-full h-12 text-base px-8 shadow-md bg-primary text-white hover:bg-primary/90 transition">
+        <Button
+          onClick={handleSearch}
+          disabled={!(destination.length > 0)}
+          className="rounded-full h-12 text-base px-8 shadow-md bg-primary text-white hover:bg-primary/90 transition"
+        >
           Confirm
         </Button>
       </section>
