@@ -7,7 +7,7 @@ function RecommendedPlacesSection() {
   const { data, isLoading } = useGetPopularPlace();
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-12">
+    <section className="w-full mx-auto px-4 py-12">
       <div className="mb-6">
         <h1 className="text-4xl font-extrabold text-neutral-800 leading-snug">
           No idea? Let us inspire you.

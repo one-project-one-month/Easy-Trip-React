@@ -1,10 +1,10 @@
-import TripPlanForm from "@/features/plan/setup/components/TripPlanForm";
+import SetupContent from "@/features/plan/setup/components/SetupContent";
 import withDestination from "@/features/withDestination";
 
 const Setup = () => {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <TripPlanForm />
+    <div className="w-full h-full max-w-7xl mx-auto">
+      <SetupContent />
     </div>
   );
 };
