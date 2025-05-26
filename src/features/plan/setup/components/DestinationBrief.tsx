@@ -12,7 +12,7 @@ function DestinationBrief({ dummy }: { dummy: DestinationBrief }) {
           <h1 className="md:text-7xl text-4xl font-extrabold text-neutral-800 mb-4">
             {name}
           </h1>
-          <p className="md:text-xl text-gray-700 leading-relaxed">
+          <p className="md:text-xl text-neutral-700 leading-relaxed">
             {description}
           </p>
         </header>
@@ -27,8 +27,8 @@ function DestinationBrief({ dummy }: { dummy: DestinationBrief }) {
             <div className="flex items-start gap-4">
               <Calendar className="text-indigo-600 mt-1" size={24} />
               <div>
-                <p className="text-sm text-gray-500">Best Time to Visit</p>
-                <p className="md:text-lg text-gray-800 font-medium">
+                <p className="text-sm text-neutral-500">Best Time to Visit</p>
+                <p className="md:text-lg text-neutral-800 font-medium">
                   {travel_info.bestTimeToVisit}
                 </p>
               </div>
@@ -36,8 +36,8 @@ function DestinationBrief({ dummy }: { dummy: DestinationBrief }) {
             <div className="flex items-start gap-4">
               <DollarSign className="text-green-600 mt-1" size={24} />
               <div>
-                <p className="text-sm text-gray-500">Average Daily Budget</p>
-                <p className="md:text-lg text-gray-800 font-medium">
+                <p className="text-sm text-neutral-500">Average Daily Budget</p>
+                <p className="md:text-lg text-neutral-800 font-medium">
                   {travel_info.avgDailyBudget}
                 </p>
               </div>
@@ -45,8 +45,8 @@ function DestinationBrief({ dummy }: { dummy: DestinationBrief }) {
             <div className="flex items-start gap-4">
               <CloudSun className="text-yellow-500 mt-1" size={24} />
               <div>
-                <p className="text-sm text-gray-500">Climate</p>
-                <p className="md:text-lg text-gray-800 font-medium">
+                <p className="text-sm text-neutral-500">Climate</p>
+                <p className="md:text-lg text-neutral-800 font-medium">
                   {travel_info.climate}
                 </p>
               </div>
@@ -54,8 +54,8 @@ function DestinationBrief({ dummy }: { dummy: DestinationBrief }) {
             <div className="flex items-start gap-4">
               <Bus className="text-blue-600 mt-1" size={24} />
               <div>
-                <p className="text-sm text-gray-500">Transport</p>
-                <p className="text-lg text-gray-800 font-medium">
+                <p className="text-sm text-neutral-500">Transport</p>
+                <p className="text-lg text-neutral-800 font-medium">
                   {travel_info.transport}
                 </p>
               </div>
