@@ -34,7 +34,7 @@ export function useGetUser(token: string | null) {
     queryKey: ["get-user"],
     queryFn: getUser,
     staleTime: 1000 * 60 * 10,
-    enabled: !token,
+    enabled: !!token,
   });
 }
 
