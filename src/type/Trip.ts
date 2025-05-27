@@ -23,3 +23,26 @@ export interface Activity {
   description: string;
   location?: string;
 }
+
+export type Highlight = {
+  img: string;
+  name: string;
+  description: string;
+};
+
+export type DestinationBrief = {
+  _id: string;
+  name: string;
+  description: string;
+  highlight: Highlight[];
+  travel_info: {
+    bestTimeToVisit: string;
+    avgDailyBudget: string;
+    climate: string;
+    transport: string;
+  };
+  location: {
+    lat: number;
+    lng: number;
+  };
+};

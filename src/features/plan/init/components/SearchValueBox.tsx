@@ -14,15 +14,19 @@ import { Destination } from "@/type/Destination";
 export default function SearchValueBox({
   data,
   isShow,
+  setIsShow,
   isLoading,
   destination,
   setDestination,
+  setInput,
 }: {
   data: Destination[];
   isShow: boolean;
   isLoading: boolean;
   destination: string;
   setDestination: React.Dispatch<React.SetStateAction<string>>;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   if (isLoading) {
     return (
@@ -58,7 +62,11 @@ export default function SearchValueBox({
                 <Card
                   key={index}
                   className={`py-3 hover:bg-neutral-100 cursor-pointer border-0 shadow-none ${exist && "bg-neutral-800 hover:bg-neutral-800 text-white"}`}
-                  onClick={() => setDestination(() => (exist ? "" : item._id))}
+                  onClick={() => {
+                    setDestination(() => (exist ? "" : item.destination));
+                    setInput(() => (exist ? "" : item.destination_name));
+                    setIsShow(() => exist ?? false);
+                  }}
                 >
                   <CardHeader className="flex space-x-1 items-center">
                     <div className="grid justify-center items-center rounded-lg h-14 w-14">

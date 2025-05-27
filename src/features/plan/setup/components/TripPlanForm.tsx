@@ -1,7 +1,14 @@
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Handshake, Heart, Sparkles, User2, UsersRound } from "lucide-react";
+import {
+  Handshake,
+  Heart,
+  Sparkles,
+  Undo2,
+  User2,
+  UsersRound,
+} from "lucide-react";
 import { useNavigate } from "react-router";
 import { isBefore, startOfToday } from "date-fns";
 
@@ -85,60 +92,81 @@ export default function TripPlanForm() {
     navigate("/plan/itinerary");
   };
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full max-w-2xl p-8 bg-white md:shadow-2xl rounded-2xl space-y-8 animate-fade-in"
-      >
-        <div className="text-start">
-          <h1 className="text-4xl font-bold text-gray-800 mb-3">
-            Tell Us Your Travel Preferences
+    <div className="w-full flex flex-col justify-center items-center px-8 py-12 mb-7">
+      <div className="w-full">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-7xl font-extrabold text-neutral-800 mb-4 tracking-tight drop-shadow-lg">
+            Plan Your Perfect Trip
           </h1>
-          <p className="text-gray-600 p-1 text-sm">
-            Just provide some basic information, and our trip planner will
-            generate a customized itinerary based on your preferences.
+          <p className="text-neutral-600 md:text-2xl font-medium">
+            Provide your preferences and let us craft a personalized itinerary
+            for you.
           </p>
         </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-14">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <FormDateRangePicker
+                form={form}
+                name="date"
+                labelClassName="md:text-xl font-semibold"
+                label="When are you going?"
+                className="w-full col-span-2"
+                disabled={(date: Date) => isBefore(date, startOfToday())}
+                required
+              />
 
-        <div className="flex items-start gap-3">
-          <FormDateRangePicker
-            form={form}
-            name="date"
-            label="When are you going?"
-            className="w-full"
-            disabled={(date: Date) => isBefore(date, startOfToday())}
-            required
-          />
+              <FormNumberStepper
+                form={form}
+                name="budget"
+                wrapperClassName="col-span-1"
+                labelClassName="md:text-xl font-semibold"
+                label="Your budget (MMK)"
+                min={100000}
+                step={100000}
+                required
+              />
+            </div>
 
-          <FormNumberStepper
-            form={form}
-            name="budget"
-            label="Your budget (MMK)"
-            min={100000}
-            step={100000}
-            required
-          />
-        </div>
+            <div>
+              <FormCardRadioGroup
+                form={form}
+                name="attendanceType"
+                label="Who are you traveling with?"
+                options={attendanceOptions}
+                radioClassName="grid grid-cols-2 md:grid-cols-4 gap-6"
+                className="w-full"
+                labelClassName="md:text-xl font-semibold"
+                required
+              />
+            </div>
 
-        <FormCardRadioGroup
-          form={form}
-          name="attendanceType"
-          label="Who are you traveling with?"
-          options={attendanceOptions}
-          radioClassName="grid grid-cols-4 gap-3"
-          className="w-full"
-          required
-        />
-
-        <Button
-          type="submit"
-          className="w-full flex gap-2 items-center justify-center text-base font-semibold cursor-pointer"
-        >
-          <span>Generate</span>
-          <Sparkles size={20} />
-        </Button>
-      </form>
-    </Form>
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                onClick={handleGoBack}
+                type="button"
+                variant="outline"
+                className="w-full py-5 md:text-xl flex gap-3 items-center justify-center font-bold"
+              >
+                <span>Go Back</span>
+                <Undo2 size={28} />
+              </Button>
+              <Button
+                type="submit"
+                className="w-full py-5 md:text-xl flex gap-3 items-center justify-center font-bold"
+              >
+                <span>Generate</span>
+                <Sparkles size={28} />
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </div>
   );
 }

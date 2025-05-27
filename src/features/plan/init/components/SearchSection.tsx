@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ function SearchSection() {
   const [destination, setDestination] = useState<string>("");
   const [input, setInput] = useState<string>("");
   const [isShow, setIsShow] = useState<boolean>(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const { setDestinationSetting } = useAppSettingStore();
   const navigate = useNavigate();
@@ -21,6 +22,23 @@ function SearchSection() {
   const { data, refetch, isLoading } = useSearchPlace(
     searchValue ? searchValue.toLowerCase() : ""
   );
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setIsShow(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -56,20 +74,25 @@ function SearchSection() {
         </p>
       </header>
 
-      <section className="flex flex-col relative md:flex-row items-center gap-3 w-full md:w-2/3 lg:w-1/2">
+      <section
+        ref={wrapperRef}
+        className="flex flex-col relative md:flex-row items-center gap-3 w-full md:w-2/3 lg:w-1/2"
+      >
         <SearchValueBox
           destination={destination}
           setDestination={setDestination}
+          setInput={setInput}
           isLoading={isLoading}
           data={data?.content}
           isShow={isShow}
+          setIsShow={setIsShow}
         />
         <div className="relative w-full">
           <Input
             className="rounded-full pl-12 pr-4 py-4 h-12 shadow-md text-base focus:ring-2 focus:ring-primary"
             type="text"
-            onFocus={() => setIsShow(prev => prev ?? false)}
-            onClick={() => setIsShow(prev => !prev)}
+            value={input}
+            onFocus={() => setIsShow(true)}
             onChange={e => setInput(e.target.value)}
             placeholder="Search destinations, cities, or landmarks"
           />
