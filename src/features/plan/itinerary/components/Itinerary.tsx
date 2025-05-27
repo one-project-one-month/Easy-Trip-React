@@ -9,7 +9,15 @@ import DayPlan from "@/features/plan/itinerary/components/DayPlan";
 
 import { type DayPlanProps } from "@/type/Trip";
 
-export default function Itinerary({ plan }: { plan: DayPlanProps[] }) {
+interface ItineraryProps {
+  plan: DayPlanProps[];
+  thingsYouShouldBring?: string[];
+}
+
+export default function Itinerary({
+  plan,
+  thingsYouShouldBring,
+}: ItineraryProps) {
   const [selectedDatePlan, setSelectedDatePlan] = useState<DayPlanProps>(
     plan[0]
   );
@@ -65,12 +73,12 @@ export default function Itinerary({ plan }: { plan: DayPlanProps[] }) {
           </CardTitle>
           <Separator />
           <CardContent>
-            <ul className="md:text-lg">
-              <li className="">Lorem, ipsum dolor.</li>
-              <li className="">Lorem, Lorem, ipsum. ipsum dolor.</li>
-              <li className="">Lorem ipsum dolor sit.</li>
-              <li className="">Lorem, ipsum dolor.</li>
-              <li className="">sit down stand up</li>
+            <ul className="list-decimal text-start p-3 space-y-2">
+              {thingsYouShouldBring?.map(item => (
+                <li key={item} className="text-sm">
+                  {item}
+                </li>
+              ))}
             </ul>
           </CardContent>
         </Card>

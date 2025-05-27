@@ -22,6 +22,7 @@ export default function DayPlan({ plan }: { plan: DayPlanProps }) {
           <div className="flex flex-col gap-3 w-full md:w-[50%]">
             {plan.activities.map(activity => (
               <ActivityCard
+                key={activity.id}
                 id={activity.id}
                 name={activity.name}
                 activityClick={handleActivity}

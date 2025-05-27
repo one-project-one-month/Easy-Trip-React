@@ -22,7 +22,11 @@ import Itinerary from "./Itinerary";
 
 import { tripPlan } from "@/shared/tripPlan";
 
-export default function DetailPlan() {
+interface DetailPlanProps {
+  thingsYouShouldBring?: string[];
+}
+
+export default function DetailPlan({ thingsYouShouldBring }: DetailPlanProps) {
   return (
     <main>
       <div className="flex items-center gap-3 mb-5">
@@ -81,7 +85,10 @@ export default function DetailPlan() {
         </div>
       </section>
 
-      <Itinerary plan={tripPlan.day_by_day_plan} />
+      <Itinerary
+        plan={tripPlan.day_by_day_plan}
+        thingsYouShouldBring={thingsYouShouldBring}
+      />
     </main>
   );
 }

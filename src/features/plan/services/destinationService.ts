@@ -35,9 +35,10 @@ export const getSearchPlaces = async (search: string) => {
 
 export const getThingsYouShouldKnow = async (data: DestinationDetail) => {
   try {
-    const response = await API.post("/trip/planner/thing-you-should-know", {
-      params: data,
-    });
+    const response = await API.post(
+      "/trip/planner/thring-you-should-know",
+      data
+    );
 
     return response.data;
   } catch (error) {
