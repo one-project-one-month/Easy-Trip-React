@@ -1,14 +1,16 @@
 import { Outlet } from "react-router";
 
 import withAuth from "@/features/withAuth";
-import UserFooter from "./UserFooter";
+import Footer from "./Footer";
 
 const ProtectedLayout = () => {
   return (
-    <div className="w-full h-full">
-      <Outlet />
-      <UserFooter />
-    </div>
+    <main className="flex flex-col min-h-screen h-screen">
+      <section className="flex-1 container mx-auto px-4">
+        <Outlet />
+      </section>
+      <Footer />
+    </main>
   );
 };
 
