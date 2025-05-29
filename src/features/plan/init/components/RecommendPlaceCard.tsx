@@ -14,7 +14,7 @@ function RecommendPlaceCard({ data }: { data: Destination }) {
 
   const handleSelect = () => {
     setDestinationSetting({
-      destination_id: data._id,
+      destination_id: data.id,
     });
     navigate("/plan/setup");
   };

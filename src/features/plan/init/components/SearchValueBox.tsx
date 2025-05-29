@@ -63,7 +63,8 @@ export default function SearchValueBox({
                   key={index}
                   className={`py-3 hover:bg-neutral-100 cursor-pointer border-0 shadow-none ${exist && "bg-neutral-800 hover:bg-neutral-800 text-white"}`}
                   onClick={() => {
-                    setDestination(() => (exist ? "" : item.destination));
+                    console.log("item", exist ? "" : item.id);
+                    setDestination(() => (exist ? "" : item.id));
                     setInput(() => (exist ? "" : item.destination_name));
                     setIsShow(() => exist ?? false);
                   }}

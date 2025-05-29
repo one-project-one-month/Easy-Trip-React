@@ -13,7 +13,7 @@ export type DayPlanProps = {
   title: string;
   place: string;
   description: string;
-  activities: Activity[];
+  activities: string[];
   estimated_day_budget?: number;
 };
 

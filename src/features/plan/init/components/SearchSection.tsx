@@ -61,6 +61,8 @@ function SearchSection() {
     navigate("/plan/setup");
   };
 
+  console.log("SearchSection data:", destination, data);
+
   return (
     <>
       <header>
@@ -103,7 +105,7 @@ function SearchSection() {
         </div>
         <Button
           onClick={handleSearch}
-          disabled={!(destination.length > 0)}
+          // disabled={!(destination?.length > 0)}
           className="rounded-full h-12 text-base px-8 shadow-md bg-primary text-white hover:bg-primary/90 transition"
         >
           Confirm

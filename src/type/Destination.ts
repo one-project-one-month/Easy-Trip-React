@@ -1,5 +1,5 @@
 export type Destination = {
-  _id: string;
+  id: string;
   destination_name: string;
   destination: string;
   state_region: string;
