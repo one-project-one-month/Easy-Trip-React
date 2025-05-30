@@ -83,7 +83,7 @@ export default function DetailPlan() {
       </div>
 
       {/* //TODO: Add more sections like "Trip Overview", need to refactor. */}
-      <section className="flex flex-col md:flex-row gap-5 mb-5 mb-8 border-b pb-6">
+      <section className="flex flex-col md:flex-row gap-5 mb-5 border-b pb-6">
         <div className="w-full md:w-[50%]">
           <Card className="p-5 md:p-8 justify-between h-70 md:h-80 lg:h-96">
             <div>

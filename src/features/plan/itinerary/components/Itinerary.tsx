@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useSwipeable } from "react-swipeable";
+import { format, parse } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -61,7 +62,7 @@ export default function Itinerary({
               onClick={() => setSelectedDatePlan(item)}
               className="flex-shrink-0"
             >
-              {item.date}
+              {format(parse(item.date, "yyyy-MM-dd", new Date()), "d MMM")}
             </Button>
           ))}
         </div>
@@ -82,7 +83,11 @@ export default function Itinerary({
                 Day {selectedDatePlan?.day}: {selectedDatePlan?.title}
               </CardTitle>
               <CardDescription className="text-gray-500">
-                {selectedDatePlan?.date} · {selectedDatePlan?.place}
+                {format(
+                  parse(selectedDatePlan?.date, "yyyy-MM-dd", new Date()),
+                  "d MMM YYYY"
+                )}{" "}
+                · {selectedDatePlan?.place}
               </CardDescription>
             </CardHeader>
             <CardContent>
