@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import { Destination } from "@/type/Destination";
+import { DestinationInitProps } from "@/type/Trip";
 
 export default function SearchValueBox({
   data,
@@ -20,7 +20,7 @@ export default function SearchValueBox({
   setDestination,
   setInput,
 }: {
-  data: Destination[];
+  data: DestinationInitProps[];
   isShow: boolean;
   isLoading: boolean;
   destination: string;
@@ -63,7 +63,6 @@ export default function SearchValueBox({
                   key={index}
                   className={`py-3 hover:bg-neutral-100 cursor-pointer border-0 shadow-none ${exist && "bg-neutral-800 hover:bg-neutral-800 text-white"}`}
                   onClick={() => {
-                    console.log("item", exist ? "" : item.id);
                     setDestination(() => (exist ? "" : item.id));
                     setInput(() => (exist ? "" : item.destination_name));
                     setIsShow(() => exist ?? false);

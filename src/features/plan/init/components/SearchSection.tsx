@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import { useSearchPlace } from "../../hooks/usePlan";
+import useAppSettingStore from "@/store/appSettingStore";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { Search } from "lucide-react";
 import SearchValueBox from "./SearchValueBox";
-import { useSearchPlace } from "../../hooks/usePlan";
-import useAppSettingStore from "@/store/appSettingStore";
-import { useNavigate } from "react-router";
 
 function SearchSection() {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -65,12 +65,12 @@ function SearchSection() {
 
   return (
     <>
-      <header>
-        <h1 className="text-5xl mb-2 font-extrabold text-center text-neutral-800 leading-tight drop-shadow-md">
+      <header className="md:mt-24">
+        <h1 className="md:text-5xl text-3xl mb-2 font-extrabold text-center text-neutral-800 leading-tight drop-shadow-md">
           Where do you want to go?
         </h1>
 
-        <p className="text-lg text-center text-neutral-600 max-w-xl">
+        <p className="md:text-lg text-sm text-center text-neutral-600 max-w-xl">
           Start your journey through the beauty of Myanmar. Choose a destination
           and let's explore!
         </p>

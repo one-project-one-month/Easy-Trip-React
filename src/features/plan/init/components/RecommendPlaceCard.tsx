@@ -6,9 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import useAppSettingStore from "@/store/appSettingStore";
-import { Destination } from "@/type/Destination";
+import { DestinationInitProps } from "@/type/Trip";
 
-function RecommendPlaceCard({ data }: { data: Destination }) {
+function RecommendPlaceCard({ data }: { data: DestinationInitProps }) {
   const { setDestinationSetting } = useAppSettingStore();
   const navigate = useNavigate();
 
@@ -24,9 +24,9 @@ function RecommendPlaceCard({ data }: { data: Destination }) {
       <CardContent className="space-y-4 px-0 pb-2">
         <figure className="h-2/3 overflow-hidden">
           <img
-            src="https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg"
+            src={data.main_image}
             alt=""
-            className="w-full h-full object-cover group-hover:scale-105 transition-all"
+            className="w-full h-40 object-cover group-hover:scale-105 transition-all"
           />
         </figure>
 

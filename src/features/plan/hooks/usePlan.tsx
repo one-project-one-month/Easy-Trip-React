@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import {
+  getDestinationDescription,
   getSearchPlaces,
   getThingsYouShouldKnow,
 } from "../services/destinationService";
@@ -29,5 +30,12 @@ export const useGenerateThingsYouShouldKnow = (data: DestinationDetail) => {
     enabled: !!data.destination_id,
     staleTime: 1000 * 60 * 60,
     select: response => response.data || [],
+  });
+};
+
+export const useGetDestinationDescription = (id: string) => {
+  return useQuery({
+    queryKey: ["destiantion", "description"],
+    queryFn: () => getDestinationDescription(id),
   });
 };
