@@ -10,7 +10,7 @@ import { Link } from "react-router";
 export default function Footer() {
   return (
     <footer className="border-t ">
-      <div className="container mx-auto px-5 md:px-10 py-5 flex flex-col sm:flex-row justify-between gap-5">
+      <div className="w-full max-w-7xl mx-auto px-5 py-10 flex flex-col sm:flex-row justify-between gap-5">
         <div className="flex items-start">
           <div className="flex items-center">
             <Icons.logo />

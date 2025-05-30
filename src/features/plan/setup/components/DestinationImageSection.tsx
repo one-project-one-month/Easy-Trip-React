@@ -20,9 +20,9 @@ function DestinationImageSection(data: { hightlight: Highlight[] }) {
       <div className="w-full mx-auto flex justify-center items-center">
         <div className="w-full border max-h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-purple-100 rounded-2xl shadow-xl relative overflow-hidden transition-all duration-300">
           <img
-            src={hightlight[mainImg].img}
+            src={hightlight[mainImg].url}
             alt={hightlight[mainImg].name || "Destination Highlight"}
-            className="w-full max-h-[400px] object-cover rounded-2xl scale-105 hover:scale-110 transition-transform duration-500"
+            className="w-full max-h-[600px] object-cover rounded-2xl scale-105 hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
           <div className="absolute bottom-3 left-3 md:bottom-6 md:left-6 text-white rounded-lg md:px-5 md:py-4 max-w-[80%]">
@@ -45,7 +45,7 @@ function DestinationImageSection(data: { hightlight: Highlight[] }) {
                 className="pl-1 h-26 basis-1/2 md:basis-1/3"
               >
                 <img
-                  src={hl.img}
+                  src={hl.url}
                   onClick={() => setMainImage(index)}
                   alt="Destination Highlight"
                   className="w-full h-26 object-cover rounded-xl"

@@ -49,3 +49,19 @@ export const getThingsYouShouldKnow = async (data: DestinationDetail) => {
     throw new Error(String(error));
   }
 };
+
+export const getDestinationDescription = async (id: string) => {
+  try {
+    const response = await API.get(
+      `/destinations/description?destination_id=${id}`
+    );
+
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data?.message || error.message);
+    }
+
+    throw new Error(String(error));
+  }
+};
