@@ -97,10 +97,10 @@ export default function TripPlanForm() {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center px-8 py-12 mb-7">
+    <div className="w-full flex flex-col justify-center items-center py-12 mb-7">
       <div className="w-full">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-7xl font-extrabold text-neutral-800 mb-4 tracking-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-neutral-800 mb-4 tracking-tight drop-shadow-lg">
             Plan Your Perfect Trip
           </h1>
           <p className="text-neutral-600 md:text-2xl font-medium">

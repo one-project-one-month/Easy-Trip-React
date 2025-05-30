@@ -24,25 +24,45 @@ export interface Activity {
   location?: string;
 }
 
+export type DestinationInitProps = {
+  id: string;
+  destination_name: string;
+  destination: string;
+  state_region: string;
+  country: string;
+  score: number;
+  description: string;
+  main_image: string;
+};
+
 export type Highlight = {
-  img: string;
   name: string;
   description: string;
+  url: string;
+};
+
+type Location = {
+  lat: number;
+  lng: number;
+};
+
+type TravelInfo = {
+  avg_daily_budget: string;
+  best_time_to_visit: string;
+  climate: string;
+  transport: string;
 };
 
 export type DestinationBrief = {
-  _id: string;
-  name: string;
+  id: string;
+  country: string;
+  state_region: string;
+  destination: string;
+  destination_name: string;
   description: string;
-  highlight: Highlight[];
-  travel_info: {
-    bestTimeToVisit: string;
-    avgDailyBudget: string;
-    climate: string;
-    transport: string;
-  };
-  location: {
-    lat: number;
-    lng: number;
-  };
+  main_image: string;
+  score: number;
+  location: Location;
+  travel_info: TravelInfo;
+  highlights: Highlight[];
 };

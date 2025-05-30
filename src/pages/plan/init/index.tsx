@@ -4,7 +4,7 @@ import RecommendedPlacesSection from "@/features/plan/init/components/Recommende
 
 const Init = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col justify-center gap-6 items-center mt-10 px-4">
+    <div className="w-full max-w-7xl mx-auto flex flex-col justify-center gap-6 items-center mt-10 md:px-4">
       <DestinationInput />
 
       {/* <PicsDisplay /> */}
