@@ -28,5 +28,6 @@ export const useGenerateThingsYouShouldKnow = (data: DestinationDetail) => {
     queryFn: () => getThingsYouShouldKnow(data),
     enabled: !!data.destination_id,
     staleTime: 1000 * 60 * 60,
+    select: response => response.data || [],
   });
 };

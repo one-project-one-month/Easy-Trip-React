@@ -12,19 +12,15 @@ import {
 
 import { type DayPlanProps } from "@/type/Trip";
 
-interface ItineraryProps {
+interface DayByDayPlanProps {
   plan: DayPlanProps[];
   thingsYouShouldBring?: string[];
 }
 
-export default function Itinerary({
-  plan,
-  thingsYouShouldBring,
-}: ItineraryProps) {
+export default function DayByDayPlan({ plan }: DayByDayPlanProps) {
   const [selectedDatePlan, setSelectedDatePlan] = useState<DayPlanProps>(
     plan[0]
   );
-
   const buttonRowRef = useRef<HTMLDivElement>(null);
 
   const handlers = useSwipeable({
@@ -42,11 +38,8 @@ export default function Itinerary({
   });
 
   return (
-    <section className="">
-      <div className="flex items-center justify-between">
-        <h1 className="text-lg md:text-2xl font-semibold mb-2">Itinerary</h1>
-      </div>
-      <div className="min-h-[800px]">
+    <section className="mb-4">
+      <div className="min-h-fit">
         <div
           {...handlers}
           ref={buttonRowRef}
@@ -65,8 +58,6 @@ export default function Itinerary({
             </Button>
           ))}
         </div>
-
-        {/* <DayPlan plan={selectedDatePlan} /> */}
 
         <Card className="mb-6 shadow-lg flex flex-row">
           <div className="w-1/3 md:w-1/4 p-2 ps-4">
@@ -105,35 +96,6 @@ export default function Itinerary({
             </CardContent>
           </div>
         </Card>
-
-        {/* <Card className="text-center mt-5 p-0">
-          <CardTitle>
-            <h1 className="text-xl p-2">Things you should bring</h1>
-          </CardTitle>
-          <Separator />
-          <CardContent>
-            <ul className="list-decimal text-start p-3 space-y-2">
-              {thingsYouShouldBring?.map(item => (
-                <li key={item} className="text-sm">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card> */}
-        <div className="mt-8 bg-yellow-50 rounded-xl shadow-inner p-5">
-          <h2 className="text-xl font-semibold mb-3 text-yellow-800">
-            Things you should bring
-          </h2>
-          <hr className="mb-3 border-yellow-200" />
-          <ul className="list-decimal text-start pl-5 space-y-2">
-            {thingsYouShouldBring?.slice(0, 10)?.map(item => (
-              <li key={item} className="text-sm text-gray-700">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );
