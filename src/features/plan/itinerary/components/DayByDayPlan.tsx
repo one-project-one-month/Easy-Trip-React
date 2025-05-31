@@ -74,11 +74,11 @@ export default function DayByDayPlan({ plan }: DayByDayPlanProps) {
                 Day {selectedDatePlan?.day}: {selectedDatePlan?.title}
               </CardTitle>
               <CardDescription className="text-gray-500">
-                {format(
-                  parse(selectedDatePlan?.date, "yyyy-MM-dd", new Date()),
+                {/* {format(
+                  parse(selectedDatePlan?.date, "YYYY-MM-dd", new Date()),
                   "d MMM YYYY"
-                )}{" "}
-                · {selectedDatePlan?.place}
+                )}{" "} */}
+                {selectedDatePlan?.date}· {selectedDatePlan?.place}
               </CardDescription>
             </CardHeader>
             <CardContent>
