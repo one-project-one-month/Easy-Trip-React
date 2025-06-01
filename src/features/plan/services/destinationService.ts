@@ -37,7 +37,8 @@ export const getThingsYouShouldKnow = async (data: DestinationDetail) => {
   try {
     const response = await API.post(
       "/trip/planner/thring-you-should-know",
-      data
+      data,
+      { timeout: 60 * 60 * 1000 }
     );
 
     return response.data;
