@@ -19,11 +19,13 @@ import { Separator } from "@/components/ui/separator";
 
 import useAppSettingStore from "@/store/appSettingStore";
 import { useGenerateTripPlan } from "../../hooks/useGenerateTripPlan";
+import { useGetDestinationDescription } from "../../hooks/usePlan";
 import GenerateLoader from "@/components/core/GenerateScreenLoader";
 import AccomodationSection from "./AccomodationSection";
 import TransportationSection from "./TransportationSection";
 import TipsSection from "./TipsSection";
 import DayByDayPlan from "./DayByDayPlan";
+import { Highlight } from "@/type/Trip";
 
 export default function DetailPlan() {
   const destination = useAppSettingStore(s => s.destination);
@@ -36,6 +38,9 @@ export default function DetailPlan() {
     budget: destination?.budget,
   };
 
+  const { data: description, isLoading: descriptionLoading } =
+    useGetDestinationDescription(payload.destination_id || "");
+
   const {
     data: plan,
     isLoading: isTripPlanLoading,
@@ -44,10 +49,17 @@ export default function DetailPlan() {
 
   if (isTripPlanError) throw new Error("Error generating trip plan");
 
-  if (isTripPlanLoading || !plan || !plan.place_detail || !plan.generate_data) {
+  if (
+    isTripPlanLoading ||
+    !plan ||
+    !plan.place_detail ||
+    !plan.generate_data ||
+    descriptionLoading
+  ) {
     return <GenerateLoader />;
   }
 
+  console.log(description?.content?.highlights, "hello");
   return (
     <main>
       <div className="flex items-center gap-3 mb-2">
@@ -82,28 +94,27 @@ export default function DetailPlan() {
             <h1 className="md:text-xl font-bold ">Total Cost : 2000 USD</h1>
           </Card>
         </div>
-        <div className="w-full md:w-[50%]  rounded-2xl overflow-hidden">
-          <Carousel>
-            <CarouselContent>
-              <CarouselItem className="h-70 md:h-80 lg:h-96">
-                <img
-                  src="https://bagandaytours.com/wp-content/uploads/2017/02/dhammayangyi-pahto-temple-1.jpg"
-                  alt=""
-                  className="rounded-2xl w-full h-full object-cover"
-                />
-              </CarouselItem>
-              <CarouselItem className="h-70 md:h-80 lg:h-96">
-                <img
-                  src="https://bagandaytours.com/wp-content/uploads/2017/02/7453229842_c938700c47_b.jpg"
-                  alt=""
-                  className="rounded-2xl w-full h-full object-cover"
-                />
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+        {description && description?.content && (
+          <div className="w-full md:w-[50%]  rounded-2xl overflow-hidden">
+            <Carousel>
+              <CarouselContent>
+                {description?.content?.highlights?.map(
+                  (hl: Highlight, idx: number) => (
+                    <CarouselItem key={idx} className="h-70 md:h-80 lg:h-96">
+                      <img
+                        src={hl.url}
+                        alt={hl.name}
+                        className="rounded-2xl w-full h-full object-cover"
+                      />
+                    </CarouselItem>
+                  )
+                )}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        )}
       </section>
 
       <DayByDayPlan plan={plan?.generate_data?.day_by_day_plan} />
