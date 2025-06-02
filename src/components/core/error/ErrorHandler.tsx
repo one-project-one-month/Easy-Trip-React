@@ -1,4 +1,5 @@
 import { StatusCode } from "@/ulits/status";
+import InternalServerErrorScreen from "./InternalServerError";
 
 const ErrorHandler = ({ statusCode }: { statusCode: StatusCode }) => {
   switch (statusCode) {
@@ -9,9 +10,9 @@ const ErrorHandler = ({ statusCode }: { statusCode: StatusCode }) => {
     case StatusCode.NotFound:
       return <div>Resource Not Found</div>;
     case StatusCode.InternalServerError:
-      return <div>Internal Server Error</div>;
+      return <InternalServerErrorScreen />;
     default:
-      return <div>Internal Server Error</div>;
+      return <InternalServerErrorScreen />;
   }
 };
 

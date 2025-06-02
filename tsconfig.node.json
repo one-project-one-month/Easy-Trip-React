@@ -26,13 +26,13 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    
+
     // setAlias
     "paths": {
-      "@/*" : ["./*"],   
+      "@/*": ["./*"]
     },
     "outDir": "dist",
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "include": ["vite.config.ts"]
 }

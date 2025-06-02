@@ -1,10 +1,13 @@
-import { Suspense } from "react";
-import { Loader } from "@/components/core/layout";
+import React, { JSX, Suspense } from "react";
 
-export default function PageLoader(Component: any) {
-  return (props: any) => (
-    <Suspense fallback={<Loader />}>
-      <Component {...props} />
-    </Suspense>
-  );
+export default function PageLoader<P extends JSX.IntrinsicAttributes>(
+  Component: React.ComponentType<P>
+) {
+  return function WrappedComponent(props: P) {
+    return (
+      <Suspense fallback={<></>}>
+        <Component {...(props as P)} />
+      </Suspense>
+    );
+  };
 }
