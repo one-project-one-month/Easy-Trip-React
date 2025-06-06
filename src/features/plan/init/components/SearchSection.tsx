@@ -19,7 +19,7 @@ function SearchSection() {
   const { setDestinationSetting } = useAppSettingStore();
   const navigate = useNavigate();
 
-  const { data, refetch, isLoading } = useSearchPlace(
+  const { data, isLoading } = useSearchPlace(
     searchValue ? searchValue.toLowerCase() : ""
   );
 
@@ -49,12 +49,6 @@ function SearchSection() {
       clearTimeout(handler);
     };
   }, [input]);
-
-  useEffect(() => {
-    if (searchValue.toLowerCase().trim()) {
-      refetch();
-    }
-  }, [searchValue, refetch]);
 
   const handleSearch = () => {
     setDestinationSetting({ destination_id: destination });

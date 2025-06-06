@@ -49,7 +49,7 @@ export default function DayByDayPlan({ plan }: DayByDayPlanProps) {
           {plan.map(item => (
             <Button
               variant={
-                selectedDatePlan.date === item.date ? "secondary" : "ghost"
+                selectedDatePlan.date === item.date ? "default" : "ghost"
               }
               key={item.date}
               onClick={() => setSelectedDatePlan(item)}
