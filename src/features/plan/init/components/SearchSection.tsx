@@ -19,7 +19,7 @@ function SearchSection() {
   const { setDestinationSetting } = useAppSettingStore();
   const navigate = useNavigate();
 
-  const { data, refetch, isLoading } = useSearchPlace(
+  const { data, isLoading } = useSearchPlace(
     searchValue ? searchValue.toLowerCase() : ""
   );
 
@@ -50,18 +50,10 @@ function SearchSection() {
     };
   }, [input]);
 
-  useEffect(() => {
-    if (searchValue.toLowerCase().trim()) {
-      refetch();
-    }
-  }, [searchValue, refetch]);
-
   const handleSearch = () => {
     setDestinationSetting({ destination_id: destination });
     navigate("/plan/setup");
   };
-
-  console.log("SearchSection data:", destination, data);
 
   return (
     <>

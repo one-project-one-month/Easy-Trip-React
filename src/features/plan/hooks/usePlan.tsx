@@ -20,7 +20,7 @@ export const useSearchPlace = (search: string) => {
   return useQuery({
     queryKey: ["destination", { search }],
     queryFn: () => getSearchPlaces(search),
-    enabled: false,
+    enabled: true,
     staleTime: 1000 * 60 * 60,
   });
 };
