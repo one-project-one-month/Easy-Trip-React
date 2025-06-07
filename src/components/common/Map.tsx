@@ -24,8 +24,13 @@ const Map = ({ lat, lng, place }: MyMapProps) => {
   const position: LatLngExpression = [lat, lng];
 
   return (
-    <div className="my-4 w-full relative z-0">
-      <MapContainer zoom={13} center={[0, 0]} scrollWheelZoom={false}>
+    <div className="my-4 relative z-0">
+      <MapContainer
+        style={{ height: "400px", width: "100%" }}
+        zoom={13}
+        center={[0, 0]}
+        scrollWheelZoom={false}
+      >
         <SetView center={position} zoom={10} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

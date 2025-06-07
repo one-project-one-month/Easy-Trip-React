@@ -55,8 +55,6 @@ function SearchSection() {
     navigate("/plan/setup");
   };
 
-  console.log("SearchSection data:", destination, data);
-
   return (
     <>
       <header className="md:mt-24">
